@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 
 const heroImages = [
-  'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80',
-  'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80',
-  'https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80',
-  'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80'
+  '/images/hero_bg.jpg',
+  '/images/circle_a_mentor.jpg',
+  '/images/circle_c_laptop.jpg',
+  '/images/circle_d_meeting.jpg'
 ];
 import { Link } from 'react-router-dom';
 import { ArrowRight, Play } from 'lucide-react';
