@@ -76,7 +76,7 @@ export default function Programs() {
           scrollTrigger: {
             trigger: sectionRef.current,
             start: 'top 75%',
-            toggleActions: 'play none none reverse',
+            once: true,
           },
         }
       );
@@ -95,7 +95,7 @@ export default function Programs() {
           scrollTrigger: {
             trigger: cardsRef.current,
             start: 'top 80%',
-            toggleActions: 'play none none reverse',
+            once: true,
           },
         }
       );
@@ -107,9 +107,13 @@ export default function Programs() {
   return (
     <section
       ref={sectionRef}
-      className="relative py-24 lg:py-32 bg-[hsl(var(--brand-light))]"
+      className="relative py-24 lg:py-32 bg-[hsl(var(--brand-light))] overflow-hidden"
     >
-      <div className="w-full px-6 lg:px-12 xl:px-20">
+      {/* Premium Depth Overlays */}
+      <div className="absolute inset-0 bg-mesh-premium opacity-20 pointer-events-none" />
+      <div className="absolute inset-0 bg-dots opacity-20 mix-blend-multiply pointer-events-none" />
+      
+      <div className="relative z-10 w-full px-6 lg:px-12 xl:px-20">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <div className="text-center mb-16">
@@ -128,8 +132,14 @@ export default function Programs() {
             {programs.map((program, i) => (
               <div
                 key={i}
-                className="program-card bg-white rounded-[28px] overflow-hidden shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 flex flex-col"
+                className="program-card relative bg-white/80 backdrop-blur-sm rounded-[28px] overflow-hidden shadow-lg border border-gray-100 hover:shadow-2xl hover:shadow-[hsl(var(--brand-purple))]/10 transition-all duration-500 hover:-translate-y-2 flex flex-col group"
               >
+                {/* Accent Top Border */}
+                <div 
+                  className="absolute top-0 left-0 right-0 h-1 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  style={{ backgroundColor: program.accent }}
+                />
+                
                 {/* Image */}
                 <div className="relative h-52 overflow-hidden">
                   <img

@@ -1,11 +1,6 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 
-const heroImages = [
-  '/images/hero_bg.jpg',
-  '/images/circle_a_mentor.jpg',
-  '/images/circle_c_laptop.jpg',
-  '/images/circle_d_meeting.jpg'
-];
+
 import { Link } from 'react-router-dom';
 import { ArrowRight, Play } from 'lucide-react';
 import gsap from 'gsap';
@@ -18,14 +13,7 @@ export default function Hero() {
   const ctaRef = useRef<HTMLDivElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
 
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
-    }, 2500);
-    return () => clearInterval(interval);
-  }, []);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -73,24 +61,25 @@ export default function Hero() {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full h-full"
+      className="hero-pin-wrap relative w-full"
     >
-      {/* Background Images (Sticky) */}
-      <div className="sticky top-0 left-0 w-full h-[100vh] h-[100svh] z-0 bg-black overflow-hidden">
-        {heroImages.map((src, index) => (
-          <img
-            key={src}
-            src={src}
-            alt={`Academy environment ${index + 1}`}
-            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-              index === currentImageIndex ? 'opacity-100' : 'opacity-0'
-            }`}
-          />
-        ))}
+      {/* Background Images & Video (Sticky) */}
+      <div className="hero-sticky top-0 left-0 w-full z-0 bg-black overflow-hidden">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          poster="/hero_fallback.png"
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="https://pub-9f4f9c9b1b3e477aba4991ccfd92f1ae.r2.dev/202606191313%20(1).mp4" type="video/mp4" />
+        </video>
       </div>
 
       {/* Content (Absolute at top, scrolls normally) */}
-      <div className="absolute top-0 left-0 w-full h-[100vh] h-[100svh] z-10 px-6 lg:px-12 xl:px-20 pt-24 pb-16 flex items-center justify-center pointer-events-none">
+      <div className="absolute top-0 left-0 w-full h-[100dvh] z-10 px-6 lg:px-12 xl:px-20 pt-24 pb-16 flex items-center justify-center pointer-events-none">
         <div className="w-full max-w-5xl mx-auto text-center pointer-events-auto">
           {/* Eyebrow */}
           <div className="mb-6">
@@ -134,35 +123,37 @@ export default function Hero() {
           </p>
 
           {/* CTA Buttons */}
-          <div ref={ctaRef} className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div ref={ctaRef} className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10">
             <Link
               to="/programs"
-              className="group inline-flex items-center gap-2 px-8 py-4 bg-white text-[hsl(var(--brand-navy))] rounded-full font-semibold text-sm transition-all duration-300 hover:shadow-[0_12px_40px_rgba(255,255,255,0.25)] hover:-translate-y-0.5"
+              className="btn-primary pointer-events-auto"
             >
               Explore Programs
-              <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
+              <ArrowRight size={18} className="ml-2 transition-transform group-hover:translate-x-1" />
             </Link>
             <Link
               to="/contact"
-              className="group inline-flex items-center gap-2 px-8 py-4 bg-transparent text-white rounded-full font-semibold text-sm border-2 border-white/40 transition-all duration-300 hover:bg-white/10 hover:border-white/60"
+              className="group inline-flex items-center gap-2 px-8 py-4 bg-transparent text-white rounded-full font-semibold text-sm border-2 border-white/40 transition-all duration-300 hover:bg-white/10 hover:border-white/60 pointer-events-auto"
             >
               <Play size={16} className="fill-white" />
               Start Your Career Journey
             </Link>
           </div>
+        </div>
 
-          {/* Stats Row */}
-          <div className="mt-16 grid grid-cols-3 gap-8 max-w-xl mx-auto">
+        {/* Floating Stats Band */}
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-[95%] max-w-5xl z-20 pointer-events-auto">
+          <div className="glass-card rounded-[2rem] p-6 md:p-8 flex justify-around items-center border border-white/40 shadow-2xl">
             {[
               { value: '500+', label: 'Graduates Placed' },
               { value: '95%', label: 'Success Rate' },
               { value: '6-10', label: 'Weeks Training' },
             ].map((stat, i) => (
-              <div key={i} className="text-center">
-                <div className="text-white font-bold text-2xl md:text-3xl mb-1">
+              <div key={i} className="text-center px-4">
+                <div className="text-[hsl(var(--brand-navy))] font-bold text-3xl md:text-4xl mb-1">
                   <CountUp value={stat.value} />
                 </div>
-                <div className="text-white/60 text-xs md:text-sm">{stat.label}</div>
+                <div className="text-slate-600 text-xs md:text-sm font-medium uppercase tracking-wider">{stat.label}</div>
               </div>
             ))}
           </div>

@@ -3,6 +3,7 @@ import { Check, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import ShaderGradientCustom from '../components/ShaderGradientCustom';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -34,7 +35,7 @@ export default function OurSolution() {
           scrollTrigger: {
             trigger: sectionRef.current,
             start: 'top 75%',
-            toggleActions: 'play none none reverse',
+            once: true,
           },
         }
       );
@@ -42,9 +43,9 @@ export default function OurSolution() {
       // Solution items stagger
       gsap.fromTo(
         itemsRef.current?.querySelectorAll('.solution-item') || [],
-        { x: -30, opacity: 0 },
+        { y: 20, opacity: 0 },
         {
-          x: 0,
+          y: 0,
           opacity: 1,
           duration: 0.6,
           stagger: 0.08,
@@ -52,7 +53,7 @@ export default function OurSolution() {
           scrollTrigger: {
             trigger: itemsRef.current,
             start: 'top 80%',
-            toggleActions: 'play none none reverse',
+            once: true,
           },
         }
       );
@@ -64,23 +65,27 @@ export default function OurSolution() {
   return (
     <section
       ref={sectionRef}
-      className="relative py-24 lg:py-32 bg-white overflow-hidden"
+      className="relative py-24 lg:py-32 bg-[hsl(var(--brand-light))] overflow-hidden"
     >
+      <ShaderGradientCustom animate="on" opacity={0.80} />
+      <div className="pointer-events-none absolute inset-0 z-[1] bg-white/75" />
+      <div className="absolute inset-0 z-[1] bg-dots opacity-30 mix-blend-multiply pointer-events-none" />
+
       {/* Decorative background element */}
       <div
         className="absolute top-0 right-0 w-96 h-96 rounded-full opacity-5 -translate-y-1/2 translate-x-1/2"
         style={{ background: 'radial-gradient(circle, hsl(260,70%,55%), transparent 70%)' }}
       />
 
-      <div className="w-full px-6 lg:px-12 xl:px-20">
+      <div className="relative z-10 w-full px-6 lg:px-12 xl:px-20">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             {/* Image Side */}
             <div className="relative order-2 lg:order-1">
               <div className="relative rounded-[32px] overflow-hidden shadow-2xl">
                 <img
-                  src="/images/circle_c_laptop.jpg"
-                  alt="Professional working on laptop in modern workspace"
+                  src="/our_solution_image.png"
+                  alt="Professional instructor guiding a group of adult learners in a digital learning environment"
                   className="w-full h-auto object-cover aspect-[4/3]"
                   loading="lazy"
                 />
@@ -93,7 +98,7 @@ export default function OurSolution() {
                 }}
               />
               {/* Mission card overlay */}
-              <div className="absolute -bottom-8 right-8 bg-[hsl(var(--brand-navy))] rounded-2xl p-6 shadow-xl max-w-xs">
+              <div className="absolute -bottom-8 right-8 bg-[hsl(var(--brand-navy))] rounded-2xl p-6 shadow-xl max-w-xs border border-white/10 soft-glow-cyan shadow-[inset_0_2px_20px_rgba(255,255,255,0.1)]">
                 <p className="text-white/90 text-sm leading-relaxed">
                   <span className="text-[hsl(var(--brand-cyan))] font-semibold">Our mission:</span>{' '}
                   To bridge the gap between education and employment and create a new generation
@@ -118,9 +123,9 @@ export default function OurSolution() {
                 {solutions.map((item, i) => (
                   <div
                     key={i}
-                    className="solution-item flex items-start gap-4 p-4 rounded-xl bg-[hsl(var(--brand-light))] hover:bg-white hover:shadow-md transition-all duration-300 group"
+                    className="solution-item flex items-start gap-4 p-4 rounded-xl bg-white/60 backdrop-blur-sm hover:bg-white hover:shadow-lg hover:-translate-y-1 border border-gray-100 hover:border-[hsl(var(--brand-purple))]/30 transition-all duration-300 group"
                   >
-                    <div className="w-7 h-7 rounded-full bg-[hsla(var(--brand-purple),0.1)] flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:bg-[hsl(var(--brand-purple))] transition-colors duration-300">
+                    <div className="w-7 h-7 rounded-full bg-[hsla(var(--brand-purple),0.1)] flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:bg-[hsl(var(--brand-purple))] transition-colors duration-300 shadow-sm">
                       <Check
                         size={14}
                         className="text-[hsl(var(--brand-purple))] group-hover:text-white transition-colors duration-300"

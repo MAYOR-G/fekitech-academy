@@ -4,6 +4,7 @@ import { Target, Eye, Heart, ArrowRight, Award, Users, BookOpen, TrendingUp } fr
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import CountUp from '../components/CountUp';
+import ShaderGradientCustom from '../components/ShaderGradientCustom';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -50,7 +51,7 @@ export default function AboutPage() {
           scrollTrigger: {
             trigger: pageRef.current,
             start: 'top 80%',
-            toggleActions: 'play none none reverse',
+            once: true,
           },
         }
       );
@@ -67,8 +68,10 @@ export default function AboutPage() {
           <img
             src="/images/hero_bg.jpg"
             alt=""
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover blur-[2px] scale-105 opacity-80"
           />
+          {/* Premium Depth Overlay */}
+          <div className="absolute inset-0 bg-mesh-purple opacity-40 mix-blend-overlay pointer-events-none" />
         </div>
         <div className="relative z-10 w-full px-6 lg:px-12 xl:px-20">
           <div className="max-w-4xl mx-auto text-center">
@@ -76,8 +79,7 @@ export default function AboutPage() {
               About Us
             </span>
             <h1 className="animate-item text-[clamp(2.5rem,5vw,4rem)] font-black text-white mb-6 leading-tight" style={{ textShadow: '0 4px 16px rgba(0,0,0,0.5)' }}>
-              We Are Building<br />
-              <span className="inline-block bg-[hsl(var(--brand-cyan))] text-white px-6 py-2 rounded-2xl shadow-xl mt-4 border border-white/20">Careers, Not Just Courses</span>
+              We Are Building Careers, Not Just Courses
             </h1>
             <p className="animate-item text-white text-lg max-w-2xl mx-auto font-medium" style={{ textShadow: '0 2px 10px rgba(0,0,0,0.6)' }}>
               Feki Tech Job Ready Academy was created to bridge the gap between education
@@ -88,8 +90,10 @@ export default function AboutPage() {
       </section>
 
       {/* Main Content */}
-      <section className="py-24 lg:py-32 bg-[hsl(var(--brand-light))]">
-        <div className="w-full px-6 lg:px-12 xl:px-20">
+      <section className="relative py-24 lg:py-32 bg-[hsl(var(--brand-light))] overflow-hidden">
+        <div className="absolute inset-0 bg-mesh-premium opacity-30 pointer-events-none" />
+        <div className="absolute inset-0 bg-world-map opacity-20 pointer-events-none mix-blend-multiply" style={{ backgroundPosition: 'center' }} />
+        <div className="relative z-10 w-full px-6 lg:px-12 xl:px-20">
           <div className="max-w-7xl mx-auto">
             {/* Story Section */}
             <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-24">
@@ -177,8 +181,10 @@ export default function AboutPage() {
             </div>
 
             {/* Framework Preview */}
-            <div className="animate-item bg-white rounded-[28px] p-8 lg:p-12 shadow-sm border border-gray-100">
-              <div className="grid lg:grid-cols-2 gap-10 items-center">
+            <div className="animate-item bg-white rounded-[28px] p-8 lg:p-12 shadow-sm border border-gray-100 relative overflow-hidden">
+              <ShaderGradientCustom animate="on" opacity={1} />
+              <div className="absolute inset-0 z-[1] pointer-events-none bg-white/80" />
+              <div className="relative z-10 grid lg:grid-cols-2 gap-10 items-center">
                 <div>
                   <h3 className="text-xl font-bold text-[hsl(var(--brand-navy))] mb-4">
                     Our Career Development Framework
@@ -209,14 +215,18 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Closing CTA */}
       <section
-        className="py-20 lg:py-24"
-        style={{
-          background: 'linear-gradient(135deg, hsl(260,70%,50%) 0%, hsl(270,65%,45%) 100%)',
-        }}
+        className="relative py-20 lg:py-24 overflow-hidden"
       >
-        <div className="w-full px-6 lg:px-12 xl:px-20">
+        {/* Dynamic Backgrounds */}
+        <div className="absolute inset-0 bg-[hsl(var(--brand-navy))]" />
+        <div className="absolute inset-0 bg-mesh-premium mix-blend-screen opacity-80" />
+        
+        {/* Glowing Orbs */}
+        <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-[hsl(var(--brand-purple))] rounded-full mix-blend-screen filter blur-[120px] opacity-40 animate-pulse-slow pointer-events-none" />
+        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[hsl(var(--brand-cyan))] rounded-full mix-blend-screen filter blur-[120px] opacity-30 animate-float-slow pointer-events-none" style={{ animationDelay: '2s' }} />
+        
+        <div className="relative z-10 w-full px-6 lg:px-12 xl:px-20">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="animate-item text-[clamp(1.75rem,3.5vw,2.5rem)] font-bold text-white mb-6">
               We Are Not Just Building Courses—<br />

@@ -9,9 +9,7 @@ import CTA from '../sections/CTA';
 export default function Home() {
   return (
     <main>
-      <section className="hero-pin-wrap">
-        <Hero />
-      </section>
+      <Hero />
 
       <div className="page-content">
         <WhyJob />

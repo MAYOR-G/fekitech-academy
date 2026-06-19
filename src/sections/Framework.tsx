@@ -11,6 +11,7 @@ import {
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import ShaderGradientCustom from '../components/ShaderGradientCustom';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -66,40 +67,61 @@ export default function Framework() {
   useEffect(() => {
     const ctx = gsap.context(() => {
       // Title animation
-      gsap.fromTo(
-        sectionRef.current?.querySelectorAll('.title-animate') || [],
-        { y: 40, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          stagger: 0.1,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: 'top 75%',
-            toggleActions: 'play none none reverse',
-          },
-        }
-      );
+      const titles = sectionRef.current?.querySelectorAll('.title-animate');
+      if (titles && titles.length > 0) {
+        gsap.fromTo(
+          titles,
+          { y: 40, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.8,
+            stagger: 0.1,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              start: 'top 75%',
+              once: true,
+            },
+          }
+        );
+      }
 
       // Steps animation
-      gsap.fromTo(
-        stepsRef.current?.querySelectorAll('.step-item') || [],
-        { x: -30, opacity: 0 },
-        {
-          x: 0,
-          opacity: 1,
-          duration: 0.6,
-          stagger: 0.1,
-          ease: 'power3.out',
+      const stepItems = stepsRef.current?.querySelectorAll('.step-item');
+      if (stepItems && stepItems.length > 0) {
+        gsap.fromTo(
+          stepItems,
+          { x: -30, opacity: 0 },
+          {
+            x: 0,
+            opacity: 1,
+            duration: 0.6,
+            stagger: 0.1,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: stepsRef.current,
+              start: 'top 80%',
+              once: true,
+            },
+          }
+        );
+      }
+
+      // Career line progress
+      const progressLine = sectionRef.current?.querySelector('.career-line-progress');
+      if (progressLine && stepsRef.current) {
+        gsap.to(progressLine, {
+          scaleY: 1,
+          ease: 'none',
           scrollTrigger: {
             trigger: stepsRef.current,
-            start: 'top 80%',
-            toggleActions: 'play none none reverse',
+            start: 'top 50%',
+            end: 'bottom 50%',
+            scrub: 1,
           },
-        }
-      );
+        });
+      }
     }, sectionRef);
 
     return () => ctx.revert();
@@ -111,10 +133,15 @@ export default function Framework() {
       id="framework"
       className="relative py-24 lg:py-32 bg-white overflow-hidden"
     >
-      {/* Decorative */}
+      {/* Soft divider */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 section-divider" />
+
+      {/* Decorative Backgrounds */}
+      <div className="absolute inset-0 bg-dots opacity-20 pointer-events-none mix-blend-multiply" />
+      <div className="absolute inset-0 bg-mesh-premium opacity-10 pointer-events-none" />
       <div
-        className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full opacity-[0.03] -translate-y-1/3 translate-x-1/4"
-        style={{ background: 'radial-gradient(circle, hsl(260,70%,55%), transparent 70%)' }}
+        className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full opacity-10 mix-blend-screen pointer-events-none -translate-y-1/3 translate-x-1/4"
+        style={{ background: 'radial-gradient(circle, hsl(var(--brand-purple)), transparent 70%)' }}
       />
 
       <div className="w-full px-6 lg:px-12 xl:px-20">
@@ -134,16 +161,17 @@ export default function Framework() {
           <div ref={stepsRef} className="max-w-3xl mx-auto mb-20">
             <div className="relative">
               {/* Connecting line */}
-              <div className="absolute left-6 top-8 bottom-8 w-0.5 bg-gradient-to-b from-[hsl(var(--brand-purple))] via-[hsl(var(--brand-cyan))] to-[hsl(var(--brand-purple))] opacity-20" />
+              <div className="absolute left-[31px] top-12 bottom-12 w-0.5 career-line opacity-30" />
+              <div className="absolute left-[31px] top-12 bottom-12 w-0.5 career-line-progress" />
 
               <div className="space-y-6">
                 {steps.map((step, i) => (
                   <div
                     key={i}
-                    className="step-item relative flex items-center gap-6 p-5 rounded-2xl bg-[hsl(var(--brand-light))] hover:bg-white hover:shadow-md transition-all duration-300 group"
+                    className="step-item relative flex items-center gap-6 p-5 rounded-2xl bg-white hover:shadow-lg hover:-translate-y-1 border border-gray-100 hover:border-[hsl(var(--brand-purple))]/30 transition-all duration-300 group shadow-sm"
                   >
                     {/* Step number + icon */}
-                    <div className="relative z-10 w-12 h-12 rounded-xl bg-[hsl(var(--brand-cyan))] flex items-center justify-center shadow-lg flex-shrink-0">
+                    <div className="relative z-10 w-12 h-12 rounded-xl bg-[hsl(var(--brand-cyan))] flex items-center justify-center shadow-[0_4px_20px_rgba(0,188,212,0.4)] flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
                       <step.icon size={20} className="text-white" />
                     </div>
                     {/* Content */}
@@ -164,10 +192,13 @@ export default function Framework() {
           </div>
 
           {/* Career Paths */}
-          <div className="animate-item bg-[hsl(var(--brand-light))] rounded-[28px] p-8 lg:p-12">
-            <h3 className="text-xl font-bold text-[hsl(var(--brand-navy))] mb-6 text-center">
-              Programs designed for high-demand careers
-            </h3>
+          <div className="animate-item bg-white/50 backdrop-blur-xl rounded-[28px] p-8 lg:p-12 border border-white/60 shadow-xl shadow-[hsl(var(--brand-navy))]/5 relative overflow-hidden">
+            <ShaderGradientCustom animate="on" opacity={1} />
+            <div className="absolute inset-0 z-[1] pointer-events-none bg-white/70" />
+            <div className="relative z-10">
+              <h3 className="text-xl font-bold text-[hsl(var(--brand-navy))] mb-6 text-center">
+                Programs designed for high-demand careers
+              </h3>
             <div className="flex flex-wrap justify-center gap-3 mb-8">
               {careerPaths.map((path, i) => (
                 <span
@@ -182,14 +213,15 @@ export default function Framework() {
               Every learner is guided through a structured pathway that focuses on skills
               development, portfolio creation, job simulation, and career readiness.
             </p>
-            <div className="text-center">
-              <Link
-                to="/contact"
-                className="btn-primary group inline-flex"
-              >
-                Start Your Journey
-                <ArrowRight size={18} className="ml-2 transition-transform group-hover:translate-x-1" />
-              </Link>
+              <div className="text-center">
+                <Link
+                  to="/contact"
+                  className="btn-primary group inline-flex shadow-[0_8px_30px_rgba(53,37,205,0.2)] hover:shadow-[0_8px_30px_rgba(53,37,205,0.4)] transition-shadow"
+                >
+                  Start Your Journey
+                  <ArrowRight size={18} className="ml-2 transition-transform group-hover:translate-x-1" />
+                </Link>
+              </div>
             </div>
           </div>
 

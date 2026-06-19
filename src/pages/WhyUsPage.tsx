@@ -14,6 +14,8 @@ import {
 } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import ShaderGradientBackground from '../components/ShaderGradientBackground';
+import ShaderGradientCustom from '../components/ShaderGradientCustom';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -87,7 +89,7 @@ export default function WhyUsPage() {
           scrollTrigger: {
             trigger: pageRef.current,
             start: 'top 80%',
-            toggleActions: 'play none none reverse',
+            once: true,
           },
         }
       );
@@ -104,8 +106,10 @@ export default function WhyUsPage() {
           <img
             src="/images/circle_b_collab.jpg"
             alt=""
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover blur-[2px] scale-105 opacity-80"
           />
+          {/* Premium Depth Overlay */}
+          <div className="absolute inset-0 bg-mesh-purple opacity-40 mix-blend-overlay pointer-events-none" />
         </div>
         <div className="relative z-10 w-full px-6 lg:px-12 xl:px-20">
           <div className="max-w-4xl mx-auto text-center">
@@ -113,8 +117,7 @@ export default function WhyUsPage() {
               Why Feki Tech
             </span>
             <h1 className="animate-item text-[clamp(2.5rem,5vw,4rem)] font-black text-white mb-6 leading-tight" style={{ textShadow: '0 4px 16px rgba(0,0,0,0.5)' }}>
-              Why Choose<br />
-              <span className="inline-block bg-[hsl(var(--brand-cyan))] text-white px-6 py-2 rounded-2xl shadow-xl mt-4 border border-white/20">Feki Tech Job Ready Academy</span>
+              Why Choose Feki Tech Job Ready Academy
             </h1>
             <p className="animate-item text-white text-lg max-w-2xl mx-auto font-medium" style={{ textShadow: '0 2px 10px rgba(0,0,0,0.6)' }}>
               We don&apos;t just teach topics. We train, build portfolios, simulate jobs,
@@ -125,8 +128,10 @@ export default function WhyUsPage() {
       </section>
 
       {/* Comparison Section */}
-      <section className="py-24 lg:py-32 bg-[hsl(var(--brand-light))]">
-        <div className="w-full px-6 lg:px-12 xl:px-20">
+      <section className="relative py-24 lg:py-32 bg-[hsl(var(--brand-light))] overflow-hidden">
+        <div className="absolute inset-0 bg-mesh-premium opacity-30 pointer-events-none" />
+        <div className="absolute inset-0 bg-world-map opacity-20 pointer-events-none mix-blend-multiply" style={{ backgroundPosition: 'center' }} />
+        <div className="relative z-10 w-full px-6 lg:px-12 xl:px-20">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-16">
               <span className="animate-item section-label mb-4 block">Comparison</span>
@@ -140,10 +145,11 @@ export default function WhyUsPage() {
 
             <div className="grid md:grid-cols-2 gap-8">
               {/* Other Academies */}
-              <div className="animate-item bg-red-50/50 rounded-[28px] p-8 lg:p-10 shadow-sm border border-red-100">
+              <div className="animate-item bg-white/60 backdrop-blur-md rounded-[28px] p-8 lg:p-10 border border-gray-200 shadow-sm relative overflow-hidden group hover:shadow-md transition-all duration-300">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-red-50 rounded-bl-full -z-10 opacity-50 transition-transform duration-500 group-hover:scale-110" />
                 <div className="flex items-center gap-3 mb-8">
-                  <div className="w-12 h-12 rounded-xl bg-red-100 flex items-center justify-center">
-                    <X size={24} className="text-red-500" />
+                  <div className="w-12 h-12 rounded-xl bg-red-50 flex items-center justify-center border border-red-100">
+                    <X size={24} className="text-red-400" />
                   </div>
                   <h3 className="text-xl font-bold text-[hsl(var(--brand-navy))]">
                     Other Academies
@@ -151,9 +157,9 @@ export default function WhyUsPage() {
                 </div>
                 <ul className="space-y-4">
                   {comparison.other.map((item, i) => (
-                    <li key={i} className="flex items-center gap-4 p-3 rounded-xl bg-white border border-red-50">
-                      <div className="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0">
-                        <item.icon size={14} className="text-red-500" />
+                    <li key={i} className="flex items-center gap-4 p-3 rounded-xl bg-white border border-red-50 shadow-sm">
+                      <div className="w-8 h-8 rounded-full bg-red-50 flex items-center justify-center flex-shrink-0 border border-red-100">
+                        <item.icon size={14} className="text-red-400" />
                       </div>
                       <span className="text-[hsl(var(--brand-gray))] font-medium">{item.text}</span>
                     </li>
@@ -163,17 +169,24 @@ export default function WhyUsPage() {
 
               {/* Feki Tech Job Ready Academy */}
               <div
-                className="animate-item rounded-[28px] p-8 lg:p-10 relative overflow-hidden shadow-lg"
+                className="animate-item rounded-[28px] p-8 lg:p-10 relative overflow-hidden shadow-2xl shadow-[hsl(var(--brand-purple))]/20"
                 style={{
                   background: 'linear-gradient(135deg, hsl(var(--brand-purple)) 0%, hsl(var(--brand-magenta)) 100%)',
                 }}
               >
-                <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full opacity-30 mix-blend-screen"
-                     style={{ background: 'radial-gradient(circle, rgba(255,255,255,0.8), transparent 70%)' }} />
+                <ShaderGradientBackground animate="on" opacity={0.8} />
+                <div className="absolute inset-0 bg-[#0F1A2E]/25 z-0" />
+
+                <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full opacity-30 mix-blend-screen z-0"
+                  style={{ background: 'radial-gradient(circle, rgba(255,255,255,0.8), transparent 70%)' }} />
+
+                {/* Glass/Glow Inner Border */}
+                <div className="absolute inset-0 rounded-[28px] border-2 border-white/20 pointer-events-none mix-blend-overlay shadow-[inset_0_0_20px_rgba(255,255,255,0.3)] z-0" />
+
                 <div className="relative z-10">
                   <div className="flex items-center gap-3 mb-8">
-                    <div className="w-12 h-12 rounded-xl bg-emerald-500 flex items-center justify-center shadow-md">
-                      <Award size={24} className="text-white" />
+                    <div className="w-12 h-12 rounded-xl bg-emerald-400/20 backdrop-blur-md flex items-center justify-center shadow-lg border border-emerald-300/30">
+                      <Award size={24} className="text-emerald-300" />
                     </div>
                     <h3 className="text-xl font-bold text-white">
                       Feki Tech Job Ready Academy
@@ -181,9 +194,9 @@ export default function WhyUsPage() {
                   </div>
                   <ul className="space-y-4">
                     {comparison.ours.map((item, i) => (
-                      <li key={i} className="flex items-center gap-4 p-3 rounded-xl bg-white/10 backdrop-blur-sm border border-white/10">
-                        <div className="w-8 h-8 rounded-full bg-emerald-500 flex items-center justify-center flex-shrink-0 shadow-sm">
-                          <item.icon size={14} className="text-white" />
+                      <li key={i} className="flex items-center gap-4 p-3 rounded-xl bg-white/10 backdrop-blur-md border border-white/10 shadow-sm">
+                        <div className="w-8 h-8 rounded-full bg-emerald-400/20 flex items-center justify-center flex-shrink-0 border border-emerald-300/30 shadow-sm">
+                          <item.icon size={14} className="text-emerald-300" />
                         </div>
                         <span className="text-white font-medium">{item.text}</span>
                       </li>
@@ -197,8 +210,9 @@ export default function WhyUsPage() {
       </section>
 
       {/* Advantages Grid */}
-      <section className="py-24 lg:py-32 bg-white">
-        <div className="w-full px-6 lg:px-12 xl:px-20">
+      <section className="relative py-24 lg:py-32 bg-white overflow-hidden">
+        <div className="absolute inset-0 bg-mesh-purple opacity-30 pointer-events-none" style={{ backgroundSize: '100% 200%' }} />
+        <div className="relative z-10 w-full px-6 lg:px-12 xl:px-20">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
               <span className="animate-item section-label mb-4 block">Our Edge</span>
@@ -234,11 +248,14 @@ export default function WhyUsPage() {
       </section>
 
       {/* Results Section */}
-      <section className="py-24 lg:py-32 bg-[hsl(var(--brand-light))]">
-        <div className="w-full px-6 lg:px-12 xl:px-20">
+      <section className="relative py-24 lg:py-32 bg-[hsl(var(--brand-light))] overflow-hidden">
+        <div className="absolute inset-0 bg-world-map opacity-30 pointer-events-none" style={{ backgroundPosition: 'center' }} />
+        <div className="relative z-10 w-full px-6 lg:px-12 xl:px-20">
           <div className="max-w-5xl mx-auto">
-            <div className="animate-item bg-white rounded-[28px] p-8 lg:p-12 shadow-sm border border-gray-100">
-              <div className="grid lg:grid-cols-2 gap-10 items-center">
+            <div className="animate-item bg-white rounded-[28px] p-8 lg:p-12 shadow-sm border border-gray-100 relative overflow-hidden">
+              <ShaderGradientCustom animate="on" opacity={1} />
+              <div className="absolute inset-0 z-[1] pointer-events-none bg-white/80" />
+              <div className="relative z-10 grid lg:grid-cols-2 gap-10 items-center">
                 <div>
                   <h3 className="text-2xl font-bold text-[hsl(var(--brand-navy))] mb-4">
                     Results That Speak

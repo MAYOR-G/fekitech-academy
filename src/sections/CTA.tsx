@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Phone, Sparkles, TrendingUp, Users } from 'lucide-react';
 import gsap from 'gsap';
@@ -14,6 +14,7 @@ const statements = [
 
 export default function CTA() {
   const sectionRef = useRef<HTMLElement>(null);
+  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -29,7 +30,7 @@ export default function CTA() {
           scrollTrigger: {
             trigger: sectionRef.current,
             start: 'top 75%',
-            toggleActions: 'play none none reverse',
+            once: true,
           },
         }
       );
@@ -42,21 +43,26 @@ export default function CTA() {
     <section
       ref={sectionRef}
       className="relative py-24 lg:py-32 overflow-hidden"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
       style={{
         background: 'linear-gradient(135deg, hsl(var(--brand-purple)) 0%, hsl(var(--brand-magenta)) 100%)',
       }}
     >
-      {/* Decorative elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div
-          className="absolute top-0 left-1/4 w-96 h-96 rounded-full opacity-30 mix-blend-screen"
-          style={{ background: 'radial-gradient(circle, hsl(var(--brand-cyan)), transparent 70%)' }}
-        />
-        <div
-          className="absolute bottom-0 right-1/4 w-80 h-80 rounded-full opacity-30 mix-blend-screen"
-          style={{ background: 'radial-gradient(circle, #ffffff, transparent 70%)' }}
-        />
-      </div>
+      {/* Dynamic Backgrounds */}
+      <div className="absolute inset-0 bg-[hsl(var(--brand-navy))] transition-colors duration-1000" />
+      <div 
+        className="absolute inset-0 bg-mesh-premium mix-blend-screen transition-opacity duration-1000"
+        style={{ opacity: isHovered ? 0.8 : 0.4 }}
+      />
+
+      {/* Glowing Orbs */}
+      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-[hsl(var(--brand-purple))] rounded-full mix-blend-screen filter blur-[120px] opacity-40 animate-pulse-slow pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[hsl(var(--brand-cyan))] rounded-full mix-blend-screen filter blur-[120px] opacity-30 animate-float-slow pointer-events-none" style={{ animationDelay: '2s' }} />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[hsl(var(--brand-magenta))] rounded-full mix-blend-screen filter blur-[150px] opacity-20 animate-pulse-slow pointer-events-none" style={{ animationDelay: '1s' }} />
+      
+      {/* Background World Map */}
+      <div className="absolute inset-0 bg-world-map opacity-20 mix-blend-overlay" style={{ backgroundPosition: 'center' }} />
 
       <div className="relative z-10 w-full px-6 lg:px-12 xl:px-20">
         <div className="max-w-4xl mx-auto text-center">
@@ -102,14 +108,14 @@ export default function CTA() {
           <div className="animate-item flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               to="/contact"
-              className="group inline-flex items-center gap-2 px-10 py-4 bg-white text-[hsl(var(--brand-navy))] rounded-full font-semibold text-sm transition-all duration-300 hover:shadow-[0_12px_40px_rgba(255,255,255,0.25)] hover:-translate-y-0.5"
+              className="px-8 py-4 bg-white text-[hsl(var(--brand-purple))] font-bold rounded-full hover:bg-[hsl(var(--brand-cyan))] hover:text-white transition-all transform hover:scale-105 shadow-lg hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] flex items-center justify-center gap-2 group w-full sm:w-auto"
             >
               Apply Now
-              <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
+              <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link
               to="/contact"
-              className="group inline-flex items-center gap-2 px-10 py-4 bg-transparent text-white rounded-full font-semibold text-sm border-2 border-white/40 transition-all duration-300 hover:bg-white/10 hover:border-white/60"
+              className="px-8 py-4 bg-white/5 text-white font-bold rounded-full border border-white/20 hover:border-white/50 hover:bg-white/10 backdrop-blur-md transition-all shadow-sm w-full sm:w-auto flex items-center justify-center gap-2"
             >
               <Phone size={16} />
               Speak With an Advisor

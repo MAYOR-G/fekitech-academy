@@ -48,7 +48,7 @@ export default function ContactPage() {
           scrollTrigger: {
             trigger: pageRef.current,
             start: 'top 80%',
-            toggleActions: 'play none none reverse',
+            once: true,
           },
         }
       );
@@ -77,8 +77,10 @@ export default function ContactPage() {
           <img
             src="/images/card_image_mentorship.jpg"
             alt=""
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover blur-[2px] scale-105 opacity-80"
           />
+          {/* Premium Depth Overlay */}
+          <div className="absolute inset-0 bg-mesh-purple opacity-40 mix-blend-overlay pointer-events-none" />
         </div>
         <div className="relative z-10 w-full px-6 lg:px-12 xl:px-20">
           <div className="max-w-4xl mx-auto text-center">
@@ -86,8 +88,7 @@ export default function ContactPage() {
               Contact Us
             </span>
             <h1 className="animate-item text-[clamp(2.5rem,5vw,4rem)] font-black text-white mb-6 leading-tight" style={{ textShadow: '0 4px 16px rgba(0,0,0,0.5)' }}>
-              Let&apos;s Start Your<br />
-              <span className="inline-block bg-[hsl(var(--brand-cyan))] text-white px-6 py-2 rounded-2xl shadow-xl mt-4 border border-white/20">Career Journey</span>
+              Let&apos;s Start Your Career Journey
             </h1>
             <p className="animate-item text-white text-lg max-w-2xl mx-auto font-medium" style={{ textShadow: '0 2px 10px rgba(0,0,0,0.6)' }}>
               Have questions about our programs? Want to speak with an advisor?
@@ -98,8 +99,11 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Section */}
-      <section className="py-24 lg:py-32 bg-[hsl(var(--brand-light))]">
-        <div className="w-full px-6 lg:px-12 xl:px-20">
+      <section className="relative py-24 lg:py-32 bg-[hsl(var(--brand-light))] overflow-hidden">
+        <div className="absolute inset-0 bg-mesh-premium opacity-30 pointer-events-none" />
+        <div className="absolute inset-0 bg-dots opacity-40 pointer-events-none" />
+        <div className="absolute inset-0 bg-world-map opacity-20 pointer-events-none mix-blend-multiply" style={{ backgroundPosition: 'center' }} />
+        <div className="relative z-10 w-full px-6 lg:px-12 xl:px-20">
           <div className="max-w-7xl mx-auto">
             <div className="grid lg:grid-cols-5 gap-12 lg:gap-16">
               {/* Contact Info */}
@@ -169,7 +173,7 @@ export default function ContactPage() {
                 </div>
 
                 {/* Quick Message */}
-                <div className="animate-item bg-white rounded-[24px] p-6 shadow-sm border border-gray-100">
+                <div className="animate-item bg-white rounded-[24px] p-6 shadow-sm border border-gray-100 soft-glow-cyan relative">
                   <div className="flex items-center gap-3 mb-3">
                     <MessageSquare size={20} className="text-[hsl(var(--brand-purple))]" />
                     <h4 className="font-semibold text-[hsl(var(--brand-navy))]">
@@ -191,7 +195,8 @@ export default function ContactPage() {
 
               {/* Contact Form */}
               <div className="lg:col-span-3">
-                <div className="animate-item bg-white rounded-[28px] p-8 lg:p-10 shadow-lg border border-gray-100">
+                <div className="animate-item glass-card bg-white/95 backdrop-blur-xl rounded-[28px] p-8 lg:p-10 shadow-xl border border-white/60 relative">
+                  <div className="absolute inset-0 bg-mesh-purple opacity-30 pointer-events-none rounded-[28px]" />
                   {submitted ? (
                     <div className="text-center py-12">
                       <div className="w-16 h-16 rounded-full bg-[hsla(var(--brand-purple),0.1)] flex items-center justify-center mx-auto mb-6">

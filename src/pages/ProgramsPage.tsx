@@ -109,7 +109,7 @@ export default function ProgramsPage() {
           scrollTrigger: {
             trigger: pageRef.current,
             start: 'top 80%',
-            toggleActions: 'play none none reverse',
+            once: true,
           },
         }
       );
@@ -126,8 +126,10 @@ export default function ProgramsPage() {
           <img
             src="/images/circle_c_laptop.jpg"
             alt=""
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover blur-[2px] scale-105 opacity-80"
           />
+          {/* Premium Depth Overlay */}
+          <div className="absolute inset-0 bg-mesh-purple opacity-40 mix-blend-overlay pointer-events-none" />
         </div>
         <div className="relative z-10 w-full px-6 lg:px-12 xl:px-20">
           <div className="max-w-4xl mx-auto text-center">
@@ -135,8 +137,7 @@ export default function ProgramsPage() {
               Our Programs
             </span>
             <h1 className="animate-item text-[clamp(2.5rem,5vw,4rem)] font-black text-white mb-6 leading-tight" style={{ textShadow: '0 4px 16px rgba(0,0,0,0.5)' }}>
-              Programs Built for<br />
-              <span className="inline-block bg-[hsl(var(--brand-cyan))] text-white px-6 py-2 rounded-2xl shadow-xl mt-4 border border-white/20">Real Employment</span>
+              Programs Built for Real Employment
             </h1>
             <p className="animate-item text-white text-lg max-w-2xl mx-auto font-medium" style={{ textShadow: '0 2px 10px rgba(0,0,0,0.6)' }}>
               Each program is designed with employers to ensure you graduate with the skills,
@@ -147,8 +148,10 @@ export default function ProgramsPage() {
       </section>
 
       {/* Programs Detail */}
-      <section className="py-24 lg:py-32 bg-[hsl(var(--brand-light))]">
-        <div className="w-full px-6 lg:px-12 xl:px-20">
+      <section className="relative py-24 lg:py-32 bg-[hsl(var(--brand-light))] overflow-hidden">
+        <div className="absolute inset-0 bg-mesh-premium opacity-30 pointer-events-none" />
+        <div className="absolute inset-0 bg-dots opacity-40 pointer-events-none" />
+        <div className="relative z-10 w-full px-6 lg:px-12 xl:px-20">
           <div className="max-w-7xl mx-auto">
             <div className="space-y-16">
               {programs.map((program, i) => (
@@ -295,13 +298,22 @@ export default function ProgramsPage() {
       </section>
 
       {/* Bottom CTA */}
-      <section className="py-20 bg-white">
-        <div className="w-full px-6 lg:px-12 xl:px-20">
+      <section className="relative py-20 overflow-hidden">
+        {/* Dynamic Backgrounds */}
+        <div className="absolute inset-0 bg-[hsl(var(--brand-navy))]" />
+        <div className="absolute inset-0 bg-mesh-premium mix-blend-screen opacity-80" />
+        
+        {/* Glowing Orbs */}
+        <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-[hsl(var(--brand-purple))] rounded-full mix-blend-screen filter blur-[120px] opacity-40 animate-pulse-slow pointer-events-none" />
+        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[hsl(var(--brand-cyan))] rounded-full mix-blend-screen filter blur-[120px] opacity-30 animate-float-slow pointer-events-none" style={{ animationDelay: '2s' }} />
+        
+        <div className="absolute inset-0 bg-world-map opacity-10 pointer-events-none mix-blend-screen" style={{ backgroundPosition: 'center' }} />
+        <div className="relative z-10 w-full px-6 lg:px-12 xl:px-20">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="animate-item text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-[hsl(var(--brand-navy))] mb-4">
+            <h2 className="animate-item text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-white mb-4">
               Not Sure Which Program is Right for You?
             </h2>
-            <p className="animate-item text-[hsl(var(--brand-gray))] mb-8">
+            <p className="animate-item text-white/90 mb-8 max-w-2xl mx-auto">
               Speak with one of our advisors. We will help you choose the best pathway
               based on your goals, experience, and interests.
             </p>
@@ -310,7 +322,7 @@ export default function ProgramsPage() {
                 Speak With an Advisor
                 <ArrowRight size={18} className="ml-2 transition-transform group-hover:translate-x-1" />
               </Link>
-              <Link to="/why-us" className="btn-secondary">
+              <Link to="/why-us" className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-sm font-semibold text-white bg-white/10 hover:bg-white/20 border border-white/20 backdrop-blur-md transition-all">
                 Why Choose Us
               </Link>
             </div>
