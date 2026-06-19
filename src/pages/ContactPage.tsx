@@ -73,7 +73,7 @@ export default function ContactPage() {
     <div ref={pageRef} className="pt-20">
       {/* Hero Banner */}
       <section className="relative py-24 lg:py-32 bg-[hsl(var(--brand-navy))] overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
+        <div className="absolute inset-0">
           <img
             src="/images/card_image_mentorship.jpg"
             alt=""
@@ -82,14 +82,14 @@ export default function ContactPage() {
         </div>
         <div className="relative z-10 w-full px-6 lg:px-12 xl:px-20">
           <div className="max-w-4xl mx-auto text-center">
-            <span className="animate-item inline-block px-5 py-2 rounded-full bg-white/10 text-white/90 text-sm font-medium tracking-wide border border-white/20 mb-6">
+            <span className="animate-item inline-block px-5 py-2 rounded-full bg-white/20 backdrop-blur-md text-white font-bold tracking-wide border border-white/40 shadow-lg mb-6" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.4)' }}>
               Contact Us
             </span>
-            <h1 className="animate-item text-[clamp(2.5rem,5vw,4rem)] font-bold text-white mb-6 leading-tight">
+            <h1 className="animate-item text-[clamp(2.5rem,5vw,4rem)] font-black text-white mb-6 leading-tight" style={{ textShadow: '0 4px 16px rgba(0,0,0,0.5)' }}>
               Let&apos;s Start Your<br />
-              <span className="text-gradient">Career Journey</span>
+              <span className="inline-block bg-[hsl(var(--brand-cyan))] text-white px-6 py-2 rounded-2xl shadow-xl mt-4 border border-white/20">Career Journey</span>
             </h1>
-            <p className="animate-item text-white/80 text-lg max-w-2xl mx-auto">
+            <p className="animate-item text-white text-lg max-w-2xl mx-auto font-medium" style={{ textShadow: '0 2px 10px rgba(0,0,0,0.6)' }}>
               Have questions about our programs? Want to speak with an advisor?
               We are here to help you take the next step.
             </p>

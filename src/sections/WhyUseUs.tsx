@@ -94,10 +94,10 @@ export default function WhyUseUs() {
           {/* Comparison Cards */}
           <div ref={cardsRef} className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {/* Other Academies */}
-            <div className="compare-card bg-[hsl(var(--brand-light))] rounded-[28px] p-8 lg:p-10">
+            <div className="compare-card bg-red-50/50 rounded-[28px] p-8 lg:p-10 border border-red-100">
               <div className="flex items-center gap-3 mb-8">
-                <div className="w-10 h-10 rounded-xl bg-gray-200 flex items-center justify-center">
-                  <X size={20} className="text-gray-500" />
+                <div className="w-10 h-10 rounded-xl bg-red-100 flex items-center justify-center">
+                  <X size={20} className="text-red-500" />
                 </div>
                 <h3 className="text-xl font-bold text-[hsl(var(--brand-navy))]">
                   Other Academies
@@ -106,8 +106,8 @@ export default function WhyUseUs() {
               <ul className="space-y-4">
                 {otherAcademies.map((item, i) => (
                   <li key={i} className="flex items-center gap-4">
-                    <div className="w-6 h-6 rounded-full bg-gray-200 flex items-center justify-center flex-shrink-0">
-                      <X size={12} className="text-gray-500" />
+                    <div className="w-6 h-6 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0">
+                      <X size={12} className="text-red-500" />
                     </div>
                     <span className="text-[hsl(var(--brand-gray))] font-medium">{item}</span>
                   </li>
@@ -119,17 +119,17 @@ export default function WhyUseUs() {
             <div
               className="compare-card rounded-[28px] p-8 lg:p-10 relative overflow-hidden"
               style={{
-                background: 'linear-gradient(135deg, hsl(260,70%,55%) 0%, hsl(270,65%,50%) 100%)',
+                background: 'linear-gradient(135deg, hsl(var(--brand-purple)) 0%, hsl(305, 50%, 35%) 100%)',
               }}
             >
               {/* Glow effect */}
               <div
-                className="absolute -top-20 -right-20 w-40 h-40 rounded-full opacity-20"
-                style={{ background: 'radial-gradient(circle, white, transparent)' }}
+                className="absolute -top-20 -right-20 w-64 h-64 rounded-full opacity-30 mix-blend-screen"
+                style={{ background: 'radial-gradient(circle, rgba(255,255,255,0.8), transparent 70%)' }}
               />
               <div className="relative z-10">
                 <div className="flex items-center gap-3 mb-8">
-                  <div className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-xl bg-emerald-500 flex items-center justify-center shadow-lg">
                     <Check size={20} className="text-white" />
                   </div>
                   <h3 className="text-xl font-bold text-white">
@@ -139,7 +139,7 @@ export default function WhyUseUs() {
                 <ul className="space-y-4">
                   {ourAcademy.map((item, i) => (
                     <li key={i} className="flex items-center gap-4">
-                      <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
+                      <div className="w-6 h-6 rounded-full bg-emerald-500 flex items-center justify-center flex-shrink-0 shadow-sm">
                         <Check size={12} className="text-white" />
                       </div>
                       <span className="text-white/95 font-medium">{item}</span>

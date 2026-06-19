@@ -100,7 +100,7 @@ export default function WhyUsPage() {
     <div ref={pageRef} className="pt-20">
       {/* Hero Banner */}
       <section className="relative py-24 lg:py-32 bg-[hsl(var(--brand-navy))] overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
+        <div className="absolute inset-0">
           <img
             src="/images/circle_b_collab.jpg"
             alt=""
@@ -109,14 +109,14 @@ export default function WhyUsPage() {
         </div>
         <div className="relative z-10 w-full px-6 lg:px-12 xl:px-20">
           <div className="max-w-4xl mx-auto text-center">
-            <span className="animate-item inline-block px-5 py-2 rounded-full bg-white/10 text-white/90 text-sm font-medium tracking-wide border border-white/20 mb-6">
+            <span className="animate-item inline-block px-5 py-2 rounded-full bg-white/20 backdrop-blur-md text-white font-bold tracking-wide border border-white/40 shadow-lg mb-6" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.4)' }}>
               Why Feki Tech
             </span>
-            <h1 className="animate-item text-[clamp(2.5rem,5vw,4rem)] font-bold text-white mb-6 leading-tight">
+            <h1 className="animate-item text-[clamp(2.5rem,5vw,4rem)] font-black text-white mb-6 leading-tight" style={{ textShadow: '0 4px 16px rgba(0,0,0,0.5)' }}>
               Why Choose<br />
-              <span className="text-gradient">Feki Tech Job Ready Academy</span>
+              <span className="inline-block bg-[hsl(var(--brand-cyan))] text-white px-6 py-2 rounded-2xl shadow-xl mt-4 border border-white/20">Feki Tech Job Ready Academy</span>
             </h1>
-            <p className="animate-item text-white/80 text-lg max-w-2xl mx-auto">
+            <p className="animate-item text-white text-lg max-w-2xl mx-auto font-medium" style={{ textShadow: '0 2px 10px rgba(0,0,0,0.6)' }}>
               We don&apos;t just teach topics. We train, build portfolios, simulate jobs,
               and support your first placement into a meaningful career.
             </p>
@@ -140,10 +140,10 @@ export default function WhyUsPage() {
 
             <div className="grid md:grid-cols-2 gap-8">
               {/* Other Academies */}
-              <div className="animate-item bg-white rounded-[28px] p-8 lg:p-10 shadow-sm border border-gray-100">
+              <div className="animate-item bg-red-50/50 rounded-[28px] p-8 lg:p-10 shadow-sm border border-red-100">
                 <div className="flex items-center gap-3 mb-8">
-                  <div className="w-12 h-12 rounded-xl bg-gray-100 flex items-center justify-center">
-                    <X size={24} className="text-gray-400" />
+                  <div className="w-12 h-12 rounded-xl bg-red-100 flex items-center justify-center">
+                    <X size={24} className="text-red-500" />
                   </div>
                   <h3 className="text-xl font-bold text-[hsl(var(--brand-navy))]">
                     Other Academies
@@ -151,9 +151,9 @@ export default function WhyUsPage() {
                 </div>
                 <ul className="space-y-4">
                   {comparison.other.map((item, i) => (
-                    <li key={i} className="flex items-center gap-4 p-3 rounded-xl bg-gray-50">
-                      <div className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center flex-shrink-0">
-                        <item.icon size={14} className="text-gray-500" />
+                    <li key={i} className="flex items-center gap-4 p-3 rounded-xl bg-white border border-red-50">
+                      <div className="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0">
+                        <item.icon size={14} className="text-red-500" />
                       </div>
                       <span className="text-[hsl(var(--brand-gray))] font-medium">{item.text}</span>
                     </li>
@@ -163,15 +163,16 @@ export default function WhyUsPage() {
 
               {/* Feki Tech Job Ready Academy */}
               <div
-                className="animate-item rounded-[28px] p-8 lg:p-10 relative overflow-hidden"
+                className="animate-item rounded-[28px] p-8 lg:p-10 relative overflow-hidden shadow-lg"
                 style={{
-                  background: 'linear-gradient(135deg, hsl(260,70%,55%) 0%, hsl(270,65%,50%) 100%)',
+                  background: 'linear-gradient(135deg, hsl(var(--brand-purple)) 0%, hsl(305, 50%, 35%) 100%)',
                 }}
               >
-                <div className="absolute -top-20 -right-20 w-40 h-40 rounded-full opacity-20 bg-white" />
+                <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full opacity-30 mix-blend-screen"
+                     style={{ background: 'radial-gradient(circle, rgba(255,255,255,0.8), transparent 70%)' }} />
                 <div className="relative z-10">
                   <div className="flex items-center gap-3 mb-8">
-                    <div className="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-xl bg-emerald-500 flex items-center justify-center shadow-md">
                       <Award size={24} className="text-white" />
                     </div>
                     <h3 className="text-xl font-bold text-white">
@@ -180,8 +181,8 @@ export default function WhyUsPage() {
                   </div>
                   <ul className="space-y-4">
                     {comparison.ours.map((item, i) => (
-                      <li key={i} className="flex items-center gap-4 p-3 rounded-xl bg-white/10">
-                        <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
+                      <li key={i} className="flex items-center gap-4 p-3 rounded-xl bg-white/10 backdrop-blur-sm border border-white/10">
+                        <div className="w-8 h-8 rounded-full bg-emerald-500 flex items-center justify-center flex-shrink-0 shadow-sm">
                           <item.icon size={14} className="text-white" />
                         </div>
                         <span className="text-white font-medium">{item.text}</span>

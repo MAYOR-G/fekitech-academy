@@ -43,18 +43,18 @@ export default function CTA() {
       ref={sectionRef}
       className="relative py-24 lg:py-32 overflow-hidden"
       style={{
-        background: 'linear-gradient(135deg, hsl(260,70%,50%) 0%, hsl(270,65%,45%) 50%, hsl(230,40%,15%) 100%)',
+        background: 'linear-gradient(135deg, hsl(var(--brand-purple)) 0%, hsl(305, 50%, 35%) 100%)',
       }}
     >
       {/* Decorative elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div
-          className="absolute top-0 left-1/4 w-96 h-96 rounded-full opacity-10"
-          style={{ background: 'radial-gradient(circle, hsl(190,85%,55%), transparent 70%)' }}
+          className="absolute top-0 left-1/4 w-96 h-96 rounded-full opacity-30 mix-blend-screen"
+          style={{ background: 'radial-gradient(circle, hsl(var(--brand-cyan)), transparent 70%)' }}
         />
         <div
-          className="absolute bottom-0 right-1/4 w-80 h-80 rounded-full opacity-10"
-          style={{ background: 'radial-gradient(circle, hsl(260,70%,65%), transparent 70%)' }}
+          className="absolute bottom-0 right-1/4 w-80 h-80 rounded-full opacity-30 mix-blend-screen"
+          style={{ background: 'radial-gradient(circle, #ffffff, transparent 70%)' }}
         />
       </div>
 
@@ -73,8 +73,8 @@ export default function CTA() {
             <span className="relative inline-block">
               Meet Opportunity
               <span
-                className="absolute bottom-1 left-0 right-0 h-3 rounded-sm -z-0 opacity-50"
-                style={{ background: 'hsl(190,85%,55%)' }}
+                className="absolute bottom-1 left-0 right-0 h-3 rounded-sm -z-0 opacity-80"
+                style={{ background: 'hsl(var(--brand-cyan))' }}
               />
             </span>
           </h2>
@@ -86,7 +86,7 @@ export default function CTA() {
                 key={i}
                 className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/10"
               >
-                <item.icon size={16} className="text-[hsl(190,85%,55%)]" />
+                <item.icon size={16} className="text-[hsl(var(--brand-cyan))]" />
                 <span className="text-white/90 text-sm font-medium">{item.text}</span>
               </div>
             ))}

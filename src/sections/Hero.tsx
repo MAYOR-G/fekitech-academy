@@ -1,4 +1,11 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+
+const heroImages = [
+  'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80',
+  'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80',
+  'https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80',
+  'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80'
+];
 import { Link } from 'react-router-dom';
 import { ArrowRight, Play } from 'lucide-react';
 import gsap from 'gsap';
@@ -10,6 +17,15 @@ export default function Hero() {
   const subRef = useRef<HTMLParagraphElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
+
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
+    }, 2500);
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -57,23 +73,20 @@ export default function Hero() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-[100vh] min-h-[100svh] flex items-center justify-center overflow-hidden"
     >
-      {/* Background Image */}
-      <div className="absolute inset-0 z-0">
-        <img
-          src="/images/hero_bg.jpg"
-          alt="Professional training workshop environment"
-          className="w-full h-full object-cover"
-        />
-        {/* Very subtle gradient overlay for text readability - NOT heavy darkening */}
-        <div
-          ref={overlayRef}
-          className="absolute inset-0"
-          style={{
-            background: 'linear-gradient(135deg, rgba(11,12,16,0.55) 0%, rgba(11,12,16,0.35) 50%, rgba(11,12,16,0.5) 100%)',
-          }}
-        />
+      {/* Background Images */}
+      <div className="absolute inset-0 z-0 bg-black">
+        {heroImages.map((src, index) => (
+          <img
+            key={src}
+            src={src}
+            alt={`Academy environment ${index + 1}`}
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+              index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+            }`}
+          />
+        ))}
       </div>
 
       {/* Content */}
@@ -81,14 +94,14 @@ export default function Hero() {
         <div className="max-w-5xl mx-auto text-center">
           {/* Eyebrow */}
           <div className="mb-6">
-            <span className="inline-block px-5 py-2 rounded-full bg-white/10 backdrop-blur-sm text-white/90 text-sm font-medium tracking-wide border border-white/20">
+            <span className="inline-block px-5 py-2 rounded-full bg-white/20 backdrop-blur-md text-white font-bold tracking-wide border border-white/40 shadow-lg" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.4)' }}>
               Feki Tech Job Ready Academy
             </span>
           </div>
 
           {/* Main Headline */}
           <div ref={headlineRef} className="mb-8">
-            <h1 className="text-white font-bold leading-[0.95] tracking-[-0.03em]">
+            <h1 className="text-white font-black leading-[0.95] tracking-[-0.03em]" style={{ textShadow: '0 4px 16px rgba(0,0,0,0.5)' }}>
               <span className="hero-word block text-[clamp(2.5rem,6vw,5.5rem)] mb-2">
                 From Unemployed
               </span>
@@ -99,8 +112,8 @@ export default function Hero() {
                   <span
                     className="absolute bottom-2 left-0 right-0 h-4 rounded-sm -z-0"
                     style={{
-                      background: 'linear-gradient(90deg, hsl(260,70%,55%), hsl(190,85%,55%))',
-                      opacity: 0.6,
+                      background: 'linear-gradient(90deg, hsl(var(--brand-purple)), hsl(var(--brand-cyan)))',
+                      opacity: 0.8,
                     }}
                   />
                 </span>
@@ -112,7 +125,8 @@ export default function Hero() {
           {/* Subtext */}
           <p
             ref={subRef}
-            className="text-white/85 text-lg md:text-xl max-w-3xl mx-auto mb-10 leading-relaxed font-light"
+            className="text-white text-lg md:text-xl max-w-3xl mx-auto mb-10 leading-relaxed font-medium"
+            style={{ textShadow: '0 2px 10px rgba(0,0,0,0.6)' }}
           >
             We help graduates, career changers, and job seekers bridge the gap between
             education and employment through practical training, portfolio projects,
@@ -155,13 +169,7 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Bottom gradient fade to next section */}
-      <div
-        className="absolute bottom-0 left-0 right-0 h-32 z-10"
-        style={{
-          background: 'linear-gradient(to bottom, transparent, hsl(var(--brand-light)))',
-        }}
-      />
+      {/* Cloud shadow removed */}
     </section>
   );
 }

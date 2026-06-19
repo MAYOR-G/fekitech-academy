@@ -143,7 +143,7 @@ export default function Framework() {
                     className="step-item relative flex items-center gap-6 p-5 rounded-2xl bg-[hsl(var(--brand-light))] hover:bg-white hover:shadow-md transition-all duration-300 group"
                   >
                     {/* Step number + icon */}
-                    <div className="relative z-10 w-12 h-12 rounded-xl gradient-purple flex items-center justify-center shadow-lg flex-shrink-0">
+                    <div className="relative z-10 w-12 h-12 rounded-xl bg-[hsl(var(--brand-cyan))] flex items-center justify-center shadow-lg flex-shrink-0">
                       <step.icon size={20} className="text-white" />
                     </div>
                     {/* Content */}
@@ -154,7 +154,7 @@ export default function Framework() {
                       <p className="text-sm text-[hsl(var(--brand-gray))]">{step.desc}</p>
                     </div>
                     {/* Step number */}
-                    <div className="text-2xl font-bold text-[hsl(var(--brand-purple))]/10 group-hover:text-[hsl(var(--brand-purple))]/20 transition-colors">
+                    <div className="text-3xl font-black text-[hsl(var(--brand-cyan))] opacity-40 group-hover:opacity-80 transition-opacity">
                       {String(i + 1).padStart(2, '0')}
                     </div>
                   </div>
@@ -197,7 +197,7 @@ export default function Framework() {
           <div className="mt-16 text-center">
             <p className="animate-item text-[clamp(1.25rem,2.5vw,1.75rem)] font-semibold text-[hsl(var(--brand-navy))] max-w-3xl mx-auto leading-relaxed">
               At Feki Tech Job Ready Academy, we are not just building courses—
-              <span className="text-gradient"> we are building careers.</span>
+              <span className="text-[hsl(var(--brand-cyan))] font-bold"> we are building careers.</span>
             </p>
           </div>
         </div>

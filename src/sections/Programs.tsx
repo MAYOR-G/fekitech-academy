@@ -139,7 +139,7 @@ export default function Programs() {
                     loading="lazy"
                   />
                   <div
-                    className="absolute inset-0 opacity-30"
+                    className="absolute inset-0 opacity-80"
                     style={{
                       background: `linear-gradient(to top, ${program.accent}, transparent)`,
                     }}
