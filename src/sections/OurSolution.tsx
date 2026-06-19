@@ -82,11 +82,11 @@ export default function OurSolution() {
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             {/* Image Side */}
             <div className="relative order-2 lg:order-1">
-              <div className="relative rounded-[32px] overflow-hidden shadow-2xl">
+              <div className="relative rounded-[32px] overflow-hidden shadow-2xl aspect-[4/3]">
                 <img
                   src="/our_solution_image.png"
                   alt="Professional instructor guiding a group of adult learners in a digital learning environment"
-                  className="w-full h-auto object-cover aspect-[4/3]"
+                  className="absolute inset-0 w-full h-full object-cover"
                   loading="lazy"
                 />
               </div>
@@ -98,8 +98,8 @@ export default function OurSolution() {
                 }}
               />
               {/* Mission card overlay */}
-              <div className="absolute -bottom-8 right-8 bg-[hsl(var(--brand-navy))] rounded-2xl p-6 shadow-xl max-w-xs border border-white/10 soft-glow-cyan shadow-[inset_0_2px_20px_rgba(255,255,255,0.1)]">
-                <p className="text-white/90 text-sm leading-relaxed">
+              <div className="absolute -bottom-4 right-4 md:-bottom-8 md:-right-4 lg:-right-8 bg-[hsl(var(--brand-navy))] rounded-2xl p-4 md:p-6 shadow-xl max-w-[85%] md:max-w-xs border border-white/10 soft-glow-cyan shadow-[inset_0_2px_20px_rgba(255,255,255,0.1)]">
+                <p className="text-white/90 text-xs md:text-sm leading-relaxed">
                   <span className="text-[hsl(var(--brand-cyan))] font-semibold">Our mission:</span>{' '}
                   To bridge the gap between education and employment and create a new generation
                   of job-ready digital professionals.

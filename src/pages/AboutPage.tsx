@@ -102,7 +102,7 @@ export default function AboutPage() {
                   <img
                     src="/images/circle_e_presenting.jpg"
                     alt="Professional training session"
-                    className="w-full h-auto object-cover aspect-[4/3]"
+                    className="w-full object-cover aspect-[4/3]"
                     loading="lazy"
                   />
                 </div>
@@ -205,7 +205,7 @@ export default function AboutPage() {
                   <img
                     src="/images/circle_d_meeting.jpg"
                     alt="Team collaboration"
-                    className="w-full h-auto object-cover aspect-[16/10]"
+                    className="w-full object-cover aspect-[16/10]"
                     loading="lazy"
                   />
                 </div>

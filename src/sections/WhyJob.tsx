@@ -107,7 +107,7 @@ export default function WhyJob() {
       <div className="w-full px-6 lg:px-12 xl:px-20 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center max-w-7xl mx-auto">
           {/* Text Content */}
-          <div ref={contentRef}>
+          <div ref={contentRef} className="min-w-0">
 
             <h2 className="animate-item text-[clamp(2rem,4vw,3.5rem)] font-bold text-[hsl(var(--brand-navy))] mb-6 leading-tight">
               Why You Can Get a Job
@@ -144,29 +144,32 @@ export default function WhyJob() {
           </div>
 
           {/* Image */}
-          <div ref={imageRef} className="relative">
+          <div ref={imageRef} className="relative min-w-0">
             {/* World map background */}
             <div className="absolute -inset-16 bg-world-map opacity-[0.15] -z-20 pointer-events-none" style={{ maskImage: 'radial-gradient(circle, black 30%, transparent 70%)', WebkitMaskImage: 'radial-gradient(circle, black 30%, transparent 70%)' }} />
             
-            <div className="relative rounded-[32px] overflow-hidden shadow-2xl z-10">
+            <div 
+              className="relative rounded-[32px] overflow-hidden shadow-2xl z-10 w-full"
+              style={{ aspectRatio: '4/3' }}
+            >
               <img
                 src="/why_get_job_image.png"
                 alt="Diverse group of graduates or job seekers in a modern professional setting"
-                className="w-full h-auto object-cover aspect-[4/3]"
+                className="absolute inset-0 w-full h-full object-cover"
                 loading="lazy"
               />
               {/* Subtle purple accent corner */}
               <div
-                className="absolute -bottom-4 -right-4 w-24 h-24 rounded-2xl -z-10"
+                className="absolute -bottom-2 -right-2 md:-bottom-4 md:-right-4 w-20 h-20 md:w-24 md:h-24 rounded-2xl -z-10"
                 style={{
                   background: 'linear-gradient(135deg, hsl(260,70%,55%), hsl(190,85%,55%))',
                 }}
               />
             </div>
             {/* Floating stat card */}
-            <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl p-5 shadow-xl border border-gray-50 soft-glow-purple z-20">
-              <div className="text-3xl font-bold text-[hsl(var(--brand-purple))] mb-1">87%</div>
-              <div className="text-xs text-[hsl(var(--brand-gray))]">
+            <div className="absolute -bottom-4 left-4 md:-bottom-6 md:-left-6 bg-white rounded-2xl p-4 md:p-5 shadow-xl border border-gray-50 soft-glow-purple z-20">
+              <div className="text-2xl md:text-3xl font-bold text-[hsl(var(--brand-purple))] mb-1">87%</div>
+              <div className="text-[10px] md:text-xs text-[hsl(var(--brand-gray))]">
                 of employers value<br />portfolio over certificates
               </div>
             </div>

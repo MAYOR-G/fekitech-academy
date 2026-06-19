@@ -63,7 +63,7 @@ export default function About() {
                 <img
                   src="/images/circle_e_presenting.jpg"
                   alt="Professional presenting to a learning group"
-                  className="w-full h-auto object-cover aspect-[4/3]"
+                  className="w-full object-cover aspect-[4/3]"
                   loading="lazy"
                 />
               </div>

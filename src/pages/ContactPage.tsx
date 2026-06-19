@@ -336,7 +336,7 @@ export default function ContactPage() {
               <img
                 src="/images/circle_d_meeting.jpg"
                 alt="Professional support team ready to help"
-                className="w-full h-auto object-cover aspect-[21/9]"
+                className="w-full object-cover aspect-[21/9]"
                 loading="lazy"
               />
             </div>

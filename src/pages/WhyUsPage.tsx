@@ -286,7 +286,7 @@ export default function WhyUsPage() {
                   <img
                     src="/images/circle_f_portrait.jpg"
                     alt="Successful graduate"
-                    className="w-full h-auto object-cover aspect-[4/3]"
+                    className="w-full object-cover aspect-[4/3]"
                     loading="lazy"
                   />
                 </div>
