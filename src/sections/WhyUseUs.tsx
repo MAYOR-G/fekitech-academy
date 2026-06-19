@@ -119,7 +119,7 @@ export default function WhyUseUs() {
             <div
               className="compare-card rounded-[28px] p-8 lg:p-10 relative overflow-hidden"
               style={{
-                background: 'linear-gradient(135deg, hsl(var(--brand-purple)) 0%, hsl(305, 50%, 35%) 100%)',
+                background: 'linear-gradient(135deg, hsl(var(--brand-purple)) 0%, hsl(var(--brand-magenta)) 100%)',
               }}
             >
               {/* Glow effect */}

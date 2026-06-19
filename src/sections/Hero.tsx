@@ -73,10 +73,10 @@ export default function Hero() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-[100vh] min-h-[100svh] flex items-center justify-center overflow-hidden"
+      className="relative w-full h-full"
     >
-      {/* Background Images */}
-      <div className="absolute inset-0 z-0 bg-black">
+      {/* Background Images (Sticky) */}
+      <div className="sticky top-0 left-0 w-full h-[100vh] h-[100svh] z-0 bg-black overflow-hidden">
         {heroImages.map((src, index) => (
           <img
             key={src}
@@ -89,9 +89,9 @@ export default function Hero() {
         ))}
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 w-full px-6 lg:px-12 xl:px-20 pt-24 pb-16">
-        <div className="max-w-5xl mx-auto text-center">
+      {/* Content (Absolute at top, scrolls normally) */}
+      <div className="absolute top-0 left-0 w-full h-[100vh] h-[100svh] z-10 px-6 lg:px-12 xl:px-20 pt-24 pb-16 flex items-center justify-center pointer-events-none">
+        <div className="w-full max-w-5xl mx-auto text-center pointer-events-auto">
           {/* Eyebrow */}
           <div className="mb-6">
             <span className="inline-block px-5 py-2 rounded-full bg-white/20 backdrop-blur-md text-white font-bold tracking-wide border border-white/40 shadow-lg" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.4)' }}>

@@ -10,9 +10,7 @@ export default function Home() {
   return (
     <main>
       <section className="hero-pin-wrap">
-        <div className="hero-sticky">
-          <Hero />
-        </div>
+        <Hero />
       </section>
 
       <div className="page-content">

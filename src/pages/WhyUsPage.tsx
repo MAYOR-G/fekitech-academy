@@ -165,7 +165,7 @@ export default function WhyUsPage() {
               <div
                 className="animate-item rounded-[28px] p-8 lg:p-10 relative overflow-hidden shadow-lg"
                 style={{
-                  background: 'linear-gradient(135deg, hsl(var(--brand-purple)) 0%, hsl(305, 50%, 35%) 100%)',
+                  background: 'linear-gradient(135deg, hsl(var(--brand-purple)) 0%, hsl(var(--brand-magenta)) 100%)',
                 }}
               >
                 <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full opacity-30 mix-blend-screen"

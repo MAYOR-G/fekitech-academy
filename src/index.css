@@ -27,10 +27,11 @@
     --radius: 0.625rem;
 
     /* Brand Colors */
-    --brand-purple: 305 31% 53%;
-    --brand-purple-light: 305 31% 63%;
-    --brand-purple-dark: 305 31% 43%;
-    --brand-cyan: 225 80% 45%;
+    --brand-purple: 243 75% 59%;
+    --brand-purple-light: 243 75% 69%;
+    --brand-purple-dark: 243 75% 49%;
+    --brand-magenta: 292 84% 61%;
+    --brand-cyan: 199 89% 48%;
     --brand-navy: 222 47% 11%;
     --brand-gray: 225 5% 46%;
     --brand-light: 230 20% 97%;
@@ -91,7 +92,7 @@
 
   .btn-primary {
     @apply inline-flex items-center justify-center px-8 py-4 text-sm font-semibold rounded-full transition-all duration-300 relative overflow-hidden;
-    background: linear-gradient(135deg, hsl(var(--brand-purple)) 0%, hsl(var(--brand-purple-dark)) 100%);
+    background: linear-gradient(135deg, hsl(var(--brand-purple)) 0%, hsl(var(--brand-magenta)) 100%);
     color: white;
     box-shadow: inset 0 1px 0 rgba(255,255,255,0.3), 0 4px 14px hsla(var(--brand-purple), 0.4);
   }
@@ -122,7 +123,7 @@
   }
   
   .btn-secondary:hover {
-    background: linear-gradient(135deg, hsl(var(--brand-purple)) 0%, hsl(var(--brand-purple-dark)) 100%);
+    background: linear-gradient(135deg, hsl(var(--brand-purple)) 0%, hsl(var(--brand-magenta)) 100%);
     color: white;
     transform: translateY(-2px);
     box-shadow: 0 8px 24px hsla(var(--brand-purple), 0.4);

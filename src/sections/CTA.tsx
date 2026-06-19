@@ -43,7 +43,7 @@ export default function CTA() {
       ref={sectionRef}
       className="relative py-24 lg:py-32 overflow-hidden"
       style={{
-        background: 'linear-gradient(135deg, hsl(var(--brand-purple)) 0%, hsl(305, 50%, 35%) 100%)',
+        background: 'linear-gradient(135deg, hsl(var(--brand-purple)) 0%, hsl(var(--brand-magenta)) 100%)',
       }}
     >
       {/* Decorative elements */}
