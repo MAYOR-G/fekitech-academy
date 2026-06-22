@@ -79,7 +79,7 @@ export default function Hero() {
       </div>
 
       {/* Content (Absolute at top, scrolls normally) */}
-      <div className="absolute top-0 left-0 w-full h-[100dvh] z-10 px-6 lg:px-12 xl:px-20 pt-24 pb-16 flex items-center justify-center pointer-events-none">
+      <div className="absolute top-0 left-0 w-full h-[100svh] z-10 px-6 lg:px-12 xl:px-20 pt-24 pb-16 flex items-center justify-center pointer-events-none">
         <div className="w-full max-w-5xl mx-auto text-center pointer-events-auto">
           {/* Eyebrow */}
           <div className="mb-6">
