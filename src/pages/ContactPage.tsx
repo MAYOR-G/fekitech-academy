@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import {
   Mail,
   Phone,
@@ -16,20 +16,28 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 const programOptions = [
-  'Digital Careers (Business Analyst, Web Dev, UX/UI, Automation)',
-  'Operations & AI (AI Support, Business Analysis, Excel)',
-  'Business Startup Program',
+  'Data Analysis',
+  'Business Intelligence',
+  'Business Analysis',
+  'AI Support Engineering',
+  'Automation and Digital Operations',
+  'Excel Analysis and Reporting',
+  'UX/UI Design',
+  'No-Code Web Development',
+  'Business Startup and Entrepreneurship',
   'Not Sure - Need Advice',
 ];
 
 export default function ContactPage() {
   const pageRef = useRef<HTMLDivElement>(null);
+  const [searchParams] = useSearchParams();
+  const selectedProgram = searchParams.get('program') || '';
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
-    program: '',
+    program: selectedProgram,
     message: '',
   });
 
@@ -230,6 +238,11 @@ export default function ContactPage() {
                       <h3 className="text-xl font-bold text-[hsl(var(--brand-navy))] mb-6">
                         Submit Your Enquiry
                       </h3>
+                      {formData.program && formData.program !== 'Not Sure - Need Advice' && (
+                        <div className="mb-5 rounded-2xl border border-[hsl(var(--brand-purple))]/15 bg-[hsla(var(--brand-purple),0.06)] px-4 py-3 text-sm font-semibold text-[hsl(var(--brand-navy))]">
+                          Selected program: <span className="text-[hsl(var(--brand-purple))]">{formData.program}</span>
+                        </div>
+                      )}
                       <form onSubmit={handleSubmit} className="space-y-5">
                         <div className="grid sm:grid-cols-2 gap-5">
                           <div>

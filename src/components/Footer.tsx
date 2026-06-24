@@ -3,9 +3,10 @@ import { Mail, Phone, MapPin, Linkedin, Twitter, Instagram, Youtube } from 'luci
 import ShaderGradientBackground from './ShaderGradientBackground';
 
 const programLinks = [
-  { label: 'Digital Careers', path: '/programs' },
-  { label: 'Operations & AI', path: '/programs' },
-  { label: 'Business Startup', path: '/programs' },
+  { label: 'Data Analysis', path: '/programs' },
+  { label: 'Business Analysis', path: '/programs' },
+  { label: 'No-Code Web Development', path: '/programs' },
+  { label: 'Business Startup and Entrepreneurship', path: '/programs' },
 ];
 
 const companyLinks = [

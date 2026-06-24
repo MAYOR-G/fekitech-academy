@@ -28,8 +28,8 @@ const steps = [
   },
   {
     icon: Briefcase,
-    title: 'Simulate Real Jobs',
-    desc: 'Workplace experience before the job',
+    title: 'Create Real Jobs',
+    desc: 'Practical work pathways before placement',
   },
   {
     icon: UserCheck,
@@ -211,7 +211,7 @@ export default function Framework() {
             </div>
             <p className="text-center text-[hsl(var(--brand-gray))] text-sm max-w-2xl mx-auto mb-8">
               Every learner is guided through a structured pathway that focuses on skills
-              development, portfolio creation, job simulation, and career readiness.
+              development, portfolio creation, job creation, and career readiness.
             </p>
               <div className="text-center">
                 <Link

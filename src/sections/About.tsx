@@ -19,7 +19,7 @@ const values = [
   {
     icon: Heart,
     title: 'Our Belief',
-    desc: 'Learning should lead to opportunities. We don\'t just teach theory—we prepare individuals for the workplace.',
+    desc: 'Learning should lead to opportunities. We don\'t just teach theory—we prepare individuals for job creation and the workplace.',
   },
 ];
 

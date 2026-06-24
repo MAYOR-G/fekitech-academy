@@ -126,7 +126,7 @@ export default function AboutPage() {
                 <p className="animate-item text-[hsl(var(--brand-gray))] leading-relaxed mb-4">
                   We saw this gap and built Feki Tech Job Ready Academy to solve it. Our approach
                   is different—we don&apos;t just deliver content. We train, mentor, build portfolios,
-                  simulate real jobs, and connect our graduates with employers.
+                  create real jobs, and connect our graduates with employers.
                 </p>
                 <p className="animate-item text-[hsl(var(--brand-navy))] font-semibold text-lg">
                   We don&apos;t just teach theory—we prepare individuals for the workplace.
@@ -191,7 +191,7 @@ export default function AboutPage() {
                   </h3>
                   <p className="text-[hsl(var(--brand-gray))] leading-relaxed mb-6">
                     Every learner is guided through a structured pathway: Train → Build Portfolio →
-                    Simulate Real Jobs → Place into Work → Track Progression → Mentorship & Support.
+                    Create Real Jobs → Place into Work → Track Progression → Mentorship & Support.
                   </p>
                   <Link
                     to="/"

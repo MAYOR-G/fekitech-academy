@@ -72,7 +72,7 @@ export default function Hero() {
           playsInline
           preload="auto"
           poster="/hero_fallback.png"
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover scale-[1.04]"
         >
           <source src="https://pub-9f4f9c9b1b3e477aba4991ccfd92f1ae.r2.dev/202606191313%20(1).mp4" type="video/mp4" />
         </video>
@@ -117,9 +117,9 @@ export default function Hero() {
             className="text-white text-lg md:text-xl max-w-3xl mx-auto mb-10 leading-relaxed font-medium"
             style={{ textShadow: '0 2px 10px rgba(0,0,0,0.6)' }}
           >
-            We help graduates, career changers, and job seekers bridge the gap between
+            At Fekitech academy, we help graduates, career changers, and job seekers bridge the gap between
             education and employment through practical training, portfolio projects,
-            job simulations, and career support.
+            job creation, and career support.
           </p>
 
           {/* CTA Buttons */}

@@ -1,5 +1,18 @@
 import { useEffect, useRef } from 'react';
-import { Clock, FolderCheck, Award, Linkedin, Users, ArrowRight } from 'lucide-react';
+import {
+  ArrowRight,
+  BarChart3,
+  Bot,
+  BriefcaseBusiness,
+  Code2,
+  Cpu,
+  Database,
+  LineChart,
+  Palette,
+  Rocket,
+  Table2,
+  type LucideIcon,
+} from 'lucide-react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -8,53 +21,93 @@ gsap.registerPlugin(ScrollTrigger);
 
 const programs = [
   {
-    title: 'Digital Careers',
-    image: '/images/program_digital.jpg',
-    roles: [
-      'Business Analyst',
-      'Web Developer',
-      'UX/UI Designer',
-      'Automation Builder/Specialist',
-    ],
-    duration: '6 - 8 weeks training',
-    projects: '3–5 portfolio projects',
-    capstone: '1 capstone project',
-    cv: 'CV + LinkedIn setup',
-    placement: 'Job placement support (2–8 weeks)',
-    community: 'Access to job board/community',
+    title: 'Data Analysis',
+    description: 'Learn practical data cleaning, analysis, dashboards, and decision-ready insight reporting.',
+    icon: Database,
+    weeks: '8 - 10 weeks',
+    accent: 'hsl(199, 89%, 45%)',
+  },
+  {
+    title: 'Business Intelligence',
+    description: 'Turn raw business data into dashboards, reports, performance metrics, and executive insights.',
+    icon: LineChart,
+    weeks: '8 - 10 weeks',
+    accent: 'hsl(225, 80%, 45%)',
+  },
+  {
+    title: 'Business Analysis',
+    description: 'Learn process mapping, requirements, stakeholder analysis, and job-ready documentation.',
+    icon: BarChart3,
+    weeks: '6 - 8 weeks',
     accent: 'hsl(260, 70%, 55%)',
   },
   {
-    title: 'Operations & AI',
-    image: '/images/program_operations.jpg',
-    roles: [
-      'AI/Digital Support Systems',
-      'Business Analyst',
-      'Account Assistant / Reporting',
-      'Excel Analyst',
-    ],
-    duration: '8 - 10 weeks training',
-    projects: '3–5 portfolio projects',
-    capstone: '1 capstone project',
-    cv: 'CV + LinkedIn setup',
-    placement: 'Job placement support (2–8 weeks)',
-    community: 'Access to job board/community',
+    title: 'AI Support Engineering',
+    description: 'Build confidence with AI tools, support workflows, digital operations, and reporting systems.',
+    icon: Bot,
+    weeks: '8 - 10 weeks',
     accent: 'hsl(220, 70%, 50%)',
   },
   {
-    title: 'Business Startup',
-    image: '/images/program_startup.jpg',
-    roles: ['4-Week Business Manager / Startup Program'],
-    features: [
-      'Business idea validation',
-      'MVP creation',
-      'Landing page development',
-      'Social and local support',
-      'Free promotional materials',
-      'First customer strategy',
-    ],
+    title: 'Automation and Digital Operations',
+    description: 'Design practical automations for business tasks, internal tools, and repeatable team workflows.',
+    icon: Cpu,
+    weeks: '6 - 8 weeks',
     accent: 'hsl(190, 85%, 45%)',
   },
+  {
+    title: 'Excel Analysis and Reporting',
+    description: 'Build reliable spreadsheets, reports, trackers, formulas, and analysis workflows for business teams.',
+    icon: Table2,
+    weeks: '6 - 8 weeks',
+    accent: 'hsl(160, 75%, 38%)',
+  },
+  {
+    title: 'UX/UI Design',
+    description: 'Create research-backed screens, prototypes, case studies, and a portfolio employers can assess.',
+    icon: Palette,
+    weeks: '6 - 8 weeks',
+    accent: 'hsl(292, 84%, 55%)',
+  },
+  {
+    title: 'No-Code Web Development',
+    description: 'Build responsive websites, landing pages, and client-ready web experiences without heavy coding.',
+    icon: Code2,
+    weeks: '6 - 8 weeks',
+    accent: 'hsl(245, 72%, 56%)',
+  },
+  {
+    title: 'Business Startup and Entrepreneurship',
+    description: 'Validate an idea, build an MVP, prepare a landing page, and plan your first customers.',
+    icon: Rocket,
+    weeks: '4 weeks',
+    accent: 'hsl(28, 84%, 48%)',
+    startup: true,
+  },
+] satisfies Array<{
+  title: string;
+  description: string;
+  icon: LucideIcon;
+  weeks: string;
+  accent: string;
+  startup?: boolean;
+}>;
+
+const careerOutcomes = [
+  '3-5 portfolio projects',
+  '1 capstone project',
+  'CV + LinkedIn setup',
+  'Job placement support (2-8 weeks)',
+  'Access to job board/community',
+];
+
+const startupOutcomes = [
+  'Business idea validation',
+  'MVP creation',
+  'Landing page',
+  'Social and local support',
+  'Free promotional materials',
+  'First customer strategy',
 ];
 
 export default function Programs() {
@@ -107,19 +160,14 @@ export default function Programs() {
   return (
     <section
       ref={sectionRef}
-      className="relative py-24 lg:py-32 bg-[hsl(var(--brand-light))] overflow-hidden"
+      className="relative py-24 lg:py-32 bg-white overflow-hidden"
     >
-      {/* Premium Depth Overlays */}
-      <div className="absolute inset-0 bg-mesh-premium opacity-20 pointer-events-none" />
-      <div className="absolute inset-0 bg-dots opacity-20 mix-blend-multiply pointer-events-none" />
-      
       <div className="relative z-10 w-full px-6 lg:px-12 xl:px-20">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-16">
-            <span className="title-animate section-label mb-4 block">Our Programs</span>
-            <h2 className="title-animate text-[clamp(2rem,4vw,3.5rem)] font-bold text-[hsl(var(--brand-navy))] mb-4">
-              Programs Built for Employment
+          <div className="text-center mb-14">
+            <h2 className="title-animate text-[clamp(2.3rem,4.6vw,4rem)] font-black text-black mb-4">
+              Our Programs
             </h2>
             <p className="title-animate text-[hsl(var(--brand-gray))] text-lg max-w-2xl mx-auto">
               Choose a pathway that matches your goals. Each program is designed with
@@ -128,128 +176,50 @@ export default function Programs() {
           </div>
 
           {/* Cards Grid */}
-          <div ref={cardsRef} className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {programs.map((program, i) => (
-              <div
-                key={i}
-                className="program-card relative bg-white/80 backdrop-blur-sm rounded-[28px] overflow-hidden shadow-lg border border-gray-100 hover:shadow-2xl hover:shadow-[hsl(var(--brand-purple))]/10 transition-all duration-500 hover:-translate-y-2 flex flex-col group"
-              >
-                {/* Accent Top Border */}
-                <div 
-                  className="absolute top-0 left-0 right-0 h-1 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  style={{ backgroundColor: program.accent }}
-                />
-                
-                {/* Image */}
-                <div className="relative h-52 overflow-hidden">
-                  <img
-                    src={program.image}
-                    alt={`${program.title} program`}
-                    className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-                    loading="lazy"
-                  />
-                  <div
-                    className="absolute inset-0 opacity-80"
-                    style={{
-                      background: `linear-gradient(to top, ${program.accent}, transparent)`,
-                    }}
-                  />
-                  <div className="absolute bottom-4 left-4">
-                    <span
-                      className="px-4 py-1.5 rounded-full text-white text-xs font-semibold"
-                      style={{ backgroundColor: program.accent }}
+          <div ref={cardsRef} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
+            {programs.map((program) => {
+              const Icon = program.icon;
+              const outcomes = program.startup ? startupOutcomes : careerOutcomes;
+
+              return (
+                <div
+                  key={program.title}
+                  className="program-card group relative flex min-h-[420px] flex-col rounded-2xl border border-slate-200 bg-white p-6 shadow-[0_14px_40px_rgba(15,23,42,0.06)] transition-all duration-300 hover:-translate-y-1 hover:border-slate-300 hover:shadow-[0_22px_55px_rgba(15,23,42,0.11)]"
+                >
+                  <div className="mb-5 flex items-center justify-between gap-4">
+                    <div
+                      className="flex h-12 w-12 items-center justify-center rounded-2xl"
+                      style={{ backgroundColor: `${program.accent}14`, color: program.accent }}
                     >
-                      {program.title}
+                      <Icon size={23} strokeWidth={2.2} />
+                    </div>
+                    <span className="rounded-full bg-slate-50 px-3 py-1 text-xs font-semibold text-slate-500">
+                      {program.weeks}
                     </span>
                   </div>
-                </div>
-
-                {/* Content */}
-                <div className="p-6 lg:p-8 flex flex-col flex-grow">
-                  {/* Roles */}
-                  <div className="mb-5">
-                    {program.roles.map((role, ri) => (
-                      <div
-                        key={ri}
-                        className="text-[hsl(var(--brand-navy))] font-semibold text-sm mb-1"
-                      >
-                        {role}
+                  <h3 className="mb-3 text-xl font-bold text-slate-950">{program.title}</h3>
+                  <p className="mb-5 text-sm leading-6 text-[hsl(var(--brand-gray))]">
+                    {program.description}
+                  </p>
+                  <div className="mb-6 flex-1 space-y-2">
+                    {outcomes.map((outcome) => (
+                      <div key={outcome} className="flex items-start gap-2 text-sm text-slate-600">
+                        <BriefcaseBusiness size={15} className="mt-0.5 flex-shrink-0" style={{ color: program.accent }} />
+                        <span>{outcome}</span>
                       </div>
                     ))}
                   </div>
-
-                  {/* Details */}
-                  <div className="space-y-3 mb-6 flex-grow">
-                    {program.duration && (
-                      <div className="flex items-center gap-3 text-sm">
-                        <Clock size={16} style={{ color: program.accent }} />
-                        <span className="text-[hsl(var(--brand-gray))]">{program.duration}</span>
-                      </div>
-                    )}
-                    {program.projects && (
-                      <div className="flex items-center gap-3 text-sm">
-                        <FolderCheck size={16} style={{ color: program.accent }} />
-                        <span className="text-[hsl(var(--brand-gray))]">{program.projects}</span>
-                      </div>
-                    )}
-                    {program.capstone && (
-                      <div className="flex items-center gap-3 text-sm">
-                        <Award size={16} style={{ color: program.accent }} />
-                        <span className="text-[hsl(var(--brand-gray))]">{program.capstone}</span>
-                      </div>
-                    )}
-                    {program.cv && (
-                      <div className="flex items-center gap-3 text-sm">
-                        <Linkedin size={16} style={{ color: program.accent }} />
-                        <span className="text-[hsl(var(--brand-gray))]">{program.cv}</span>
-                      </div>
-                    )}
-                    {program.placement && (
-                      <div className="flex items-center gap-3 text-sm">
-                        <Users size={16} style={{ color: program.accent }} />
-                        <span className="text-[hsl(var(--brand-gray))]">{program.placement}</span>
-                      </div>
-                    )}
-                    {program.community && (
-                      <div className="flex items-center gap-3 text-sm">
-                        <Users size={16} style={{ color: program.accent }} />
-                        <span className="text-[hsl(var(--brand-gray))]">{program.community}</span>
-                      </div>
-                    )}
-                    {program.features?.map((feature, fi) => (
-                      <div key={fi} className="flex items-center gap-3 text-sm">
-                        <div
-                          className="w-1.5 h-1.5 rounded-full flex-shrink-0"
-                          style={{ backgroundColor: program.accent }}
-                        />
-                        <span className="text-[hsl(var(--brand-gray))]">{feature}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* CTA */}
                   <Link
-                    to="/contact"
-                    className="w-full py-3.5 rounded-full text-sm font-semibold text-center transition-all duration-300 flex items-center justify-center gap-2 group"
-                    style={{
-                      backgroundColor: `${program.accent}15`,
-                      color: program.accent,
-                    }}
-                    onMouseEnter={(e: React.MouseEvent<HTMLAnchorElement>) => {
-                      e.currentTarget.style.backgroundColor = program.accent;
-                      e.currentTarget.style.color = 'white';
-                    }}
-                    onMouseLeave={(e: React.MouseEvent<HTMLAnchorElement>) => {
-                      e.currentTarget.style.backgroundColor = `${program.accent}15`;
-                      e.currentTarget.style.color = program.accent;
-                    }}
+                    to={`/contact?program=${encodeURIComponent(program.title)}`}
+                    className="group/link inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold text-white transition-all duration-300 hover:shadow-lg"
+                    style={{ backgroundColor: program.accent }}
                   >
-                    Apply for this Program
-                    <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+                    Apply for This Program
+                    <ArrowRight size={16} className="transition-transform group-hover/link:translate-x-1" />
                   </Link>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>

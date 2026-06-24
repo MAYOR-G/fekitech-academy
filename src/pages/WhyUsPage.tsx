@@ -11,10 +11,11 @@ import {
   ArrowRight,
   Award,
   Target,
+  CircleDot,
+  GraduationCap,
 } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import ShaderGradientBackground from '../components/ShaderGradientBackground';
 import ShaderGradientCustom from '../components/ShaderGradientCustom';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -26,13 +27,13 @@ const comparison = {
     { icon: X, text: 'Limited support' },
     { icon: X, text: 'No portfolio reviews' },
     { icon: X, text: 'One-size-fits-all' },
-    { icon: X, text: 'No job simulation' },
+    { icon: X, text: 'No job creation focus' },
   ],
   ours: [
     { icon: Check, text: 'Train on real projects' },
     { icon: Check, text: 'Build proof of work' },
     { icon: Check, text: 'Mentorship + career support' },
-    { icon: Check, text: 'Job simulation included' },
+    { icon: Check, text: 'Job creation pathway' },
     { icon: Check, text: 'Pathways for your goals' },
     { icon: Check, text: 'Placement assistance' },
   ],
@@ -46,8 +47,8 @@ const advantages = [
   },
   {
     icon: Briefcase,
-    title: 'Job Simulation',
-    desc: 'Experience real workplace scenarios before you start your job. Our simulations prepare you for actual work environments.',
+    title: 'Job Creation',
+    desc: 'Practice with real business needs, project opportunities, and pathways that help learners create proof of value.',
   },
   {
     icon: Users,
@@ -106,7 +107,7 @@ export default function WhyUsPage() {
           <img
             src="/images/circle_b_collab.jpg"
             alt=""
-            className="w-full h-full object-cover blur-[2px] scale-105 opacity-80"
+            className="w-full h-full object-cover scale-[1.03] opacity-90"
           />
           {/* Premium Depth Overlay */}
           <div className="absolute inset-0 bg-mesh-purple opacity-40 mix-blend-overlay pointer-events-none" />
@@ -120,20 +121,18 @@ export default function WhyUsPage() {
               Why Choose Feki Tech Job Ready Academy
             </h1>
             <p className="animate-item text-white text-lg max-w-2xl mx-auto font-medium" style={{ textShadow: '0 2px 10px rgba(0,0,0,0.6)' }}>
-              We don&apos;t just teach topics. We train, build portfolios, simulate jobs,
-              and support your first placement into a meaningful career.
+              We don&apos;t just teach topics. We train, build portfolios, support job creation,
+              and guide your first placement into a meaningful career.
             </p>
           </div>
         </div>
       </section>
 
       {/* Comparison Section */}
-      <section className="relative py-24 lg:py-32 bg-[hsl(var(--brand-light))] overflow-hidden">
-        <div className="absolute inset-0 bg-mesh-premium opacity-30 pointer-events-none" />
-        <div className="absolute inset-0 bg-world-map opacity-20 pointer-events-none mix-blend-multiply" style={{ backgroundPosition: 'center' }} />
+      <section className="relative py-24 lg:py-32 bg-white overflow-hidden">
         <div className="relative z-10 w-full px-6 lg:px-12 xl:px-20">
-          <div className="max-w-5xl mx-auto">
-            <div className="text-center mb-16">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-14">
               <span className="animate-item section-label mb-4 block">Comparison</span>
               <h2 className="animate-item text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-[hsl(var(--brand-navy))] mb-4">
                 See the Difference
@@ -143,65 +142,70 @@ export default function WhyUsPage() {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
               {/* Other Academies */}
-              <div className="animate-item bg-white/60 backdrop-blur-md rounded-[28px] p-8 lg:p-10 border border-gray-200 shadow-sm relative overflow-hidden group hover:shadow-md transition-all duration-300">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-red-50 rounded-bl-full -z-10 opacity-50 transition-transform duration-500 group-hover:scale-110" />
-                <div className="flex items-center gap-3 mb-8">
-                  <div className="w-12 h-12 rounded-xl bg-red-50 flex items-center justify-center border border-red-100">
-                    <X size={24} className="text-red-400" />
+              <div className="animate-item rounded-3xl border border-slate-200 bg-slate-50/70 p-6 lg:p-8 shadow-sm">
+                <div className="mb-7 flex items-center gap-3">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-white text-slate-400 shadow-sm">
+                    <GraduationCap size={22} />
                   </div>
-                  <h3 className="text-xl font-bold text-[hsl(var(--brand-navy))]">
-                    Other Academies
-                  </h3>
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.15em] text-slate-400">
+                      Traditional route
+                    </p>
+                    <h3 className="text-2xl font-bold text-slate-950">
+                      Other Academies
+                    </h3>
+                  </div>
                 </div>
-                <ul className="space-y-4">
+                <ul className="space-y-3">
                   {comparison.other.map((item, i) => (
-                    <li key={i} className="flex items-center gap-4 p-3 rounded-xl bg-white border border-red-50 shadow-sm">
-                      <div className="w-8 h-8 rounded-full bg-red-50 flex items-center justify-center flex-shrink-0 border border-red-100">
+                    <li key={i} className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3">
+                      <div className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-red-50 text-red-400">
                         <item.icon size={14} className="text-red-400" />
                       </div>
-                      <span className="text-[hsl(var(--brand-gray))] font-medium">{item.text}</span>
+                      <span className="font-medium text-slate-500">{item.text}</span>
                     </li>
                   ))}
                 </ul>
               </div>
 
               {/* Feki Tech Job Ready Academy */}
-              <div
-                className="animate-item rounded-[28px] p-8 lg:p-10 relative overflow-hidden shadow-2xl shadow-[hsl(var(--brand-purple))]/20"
-                style={{
-                  background: 'linear-gradient(135deg, hsl(var(--brand-purple)) 0%, hsl(var(--brand-magenta)) 100%)',
-                }}
-              >
-                <ShaderGradientBackground animate="on" opacity={0.8} />
-                <div className="absolute inset-0 bg-[#0F1A2E]/25 z-0" />
-
-                <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full opacity-30 mix-blend-screen z-0"
-                  style={{ background: 'radial-gradient(circle, rgba(255,255,255,0.8), transparent 70%)' }} />
-
-                {/* Glass/Glow Inner Border */}
-                <div className="absolute inset-0 rounded-[28px] border-2 border-white/20 pointer-events-none mix-blend-overlay shadow-[inset_0_0_20px_rgba(255,255,255,0.3)] z-0" />
-
-                <div className="relative z-10">
-                  <div className="flex items-center gap-3 mb-8">
-                    <div className="w-12 h-12 rounded-xl bg-emerald-400/20 backdrop-blur-md flex items-center justify-center shadow-lg border border-emerald-300/30">
-                      <Award size={24} className="text-emerald-300" />
+              <div className="animate-item rounded-3xl border border-[hsl(var(--brand-purple))]/20 bg-white p-6 lg:p-8 shadow-[0_24px_70px_rgba(67,56,202,0.13)]">
+                <div className="mb-7 flex flex-col gap-5 md:flex-row md:items-start md:justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[hsla(var(--brand-purple),0.1)] text-[hsl(var(--brand-purple))]">
+                      <Award size={24} />
                     </div>
-                    <h3 className="text-xl font-bold text-white">
-                      Feki Tech Job Ready Academy
-                    </h3>
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-[0.15em] text-[hsl(var(--brand-purple))]">
+                        Fekitech advantage
+                      </p>
+                      <h3 className="text-2xl font-bold text-slate-950">
+                        Feki Tech Job Ready Academy
+                      </h3>
+                    </div>
                   </div>
-                  <ul className="space-y-4">
+                  <div className="inline-flex items-center gap-2 rounded-full bg-emerald-50 px-4 py-2 text-sm font-semibold text-emerald-700">
+                    <CircleDot size={14} />
+                    Built for outcomes
+                  </div>
+                </div>
+
+                <ul className="grid gap-3">
                     {comparison.ours.map((item, i) => (
-                      <li key={i} className="flex items-center gap-4 p-3 rounded-xl bg-white/10 backdrop-blur-md border border-white/10 shadow-sm">
-                        <div className="w-8 h-8 rounded-full bg-emerald-400/20 flex items-center justify-center flex-shrink-0 border border-emerald-300/30 shadow-sm">
-                          <item.icon size={14} className="text-emerald-300" />
+                      <li key={i} className="flex w-full items-center gap-3 rounded-2xl border border-slate-100 bg-white px-4 py-3 shadow-sm">
+                        <div className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-emerald-50 text-emerald-600">
+                          <item.icon size={14} className="text-emerald-600" />
                         </div>
-                        <span className="text-white font-medium">{item.text}</span>
+                        <span className="font-semibold text-slate-800">{item.text}</span>
                       </li>
                     ))}
                   </ul>
+
+                <div className="mt-6 flex w-full items-center gap-2 rounded-2xl bg-[hsla(var(--brand-purple),0.08)] px-4 py-3 text-sm font-semibold text-[hsl(var(--brand-purple))]">
+                  Training, portfolio, job creation, and support stay connected.
+                  <ArrowRight size={15} />
                 </div>
               </div>
             </div>

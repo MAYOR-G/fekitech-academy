@@ -6,16 +6,15 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 const jobRoles = [
-  'Business Analyst',
-  'Web Developer',
-  'UX/UI Designer',
-  'Automation Specialist',
-  'AI Support Engineer',
   'Data Analyst',
-  'Product Manager',
-  'Project Coordinator',
-  'Operations Manager',
-  'Growth Hacker',
+  'Business Intelligence Analyst',
+  'Business Analyst',
+  'AI Support Engineer',
+  'Automation Specialist',
+  'Excel Reporting Analyst',
+  'UX/UI Designer',
+  'No-Code Web Development',
+  'Startup Founder',
 ];
 
 export default function WhyJob() {
@@ -95,22 +94,15 @@ export default function WhyJob() {
   return (
     <section
       ref={sectionRef}
-      className="relative py-24 lg:py-32 bg-[hsl(var(--brand-light))] overflow-hidden"
+      className="relative py-24 lg:py-32 bg-white overflow-hidden"
     >
-      {/* Premium Depth Overlay */}
-      <div className="absolute inset-0 bg-mesh-premium opacity-50 pointer-events-none" />
-      
-      {/* Subtle dotted corners */}
-      <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-dots opacity-50 pointer-events-none mix-blend-multiply" style={{ maskImage: 'radial-gradient(circle at top right, black, transparent 70%)', WebkitMaskImage: 'radial-gradient(circle at top right, black, transparent 70%)' }} />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-dots opacity-50 pointer-events-none mix-blend-multiply" style={{ maskImage: 'radial-gradient(circle at bottom left, black, transparent 70%)', WebkitMaskImage: 'radial-gradient(circle at bottom left, black, transparent 70%)' }} />
-      
       <div className="w-full px-6 lg:px-12 xl:px-20 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center max-w-7xl mx-auto">
+        <div className="grid lg:grid-cols-[0.85fr_1.15fr] gap-12 lg:gap-14 items-center max-w-7xl mx-auto">
           {/* Text Content */}
           <div ref={contentRef} className="min-w-0">
 
             <h2 className="animate-item text-[clamp(2rem,4vw,3.5rem)] font-bold text-[hsl(var(--brand-navy))] mb-6 leading-tight">
-              Why You Can Get a Job
+              Why You Can&apos;t Get a Job
             </h2>
             <p className="animate-item text-[hsl(var(--brand-gray))] text-lg leading-relaxed mb-6">
               Thousands of talented people are struggling to find work. Many graduates
@@ -126,8 +118,8 @@ export default function WhyJob() {
 
             {/* Job Roles Marquee */}
             <div ref={cardsRef} className="relative w-full overflow-hidden mt-8">
-              <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-[hsl(var(--brand-light))] to-transparent z-10" />
-              <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-[hsl(var(--brand-light))] to-transparent z-10" />
+              <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-white to-transparent z-10" />
+              <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-white to-transparent z-10" />
               
               <div className="flex w-max animate-marquee space-x-4 py-4">
                 {[...jobRoles, ...jobRoles].map((role, i) => (
@@ -144,13 +136,10 @@ export default function WhyJob() {
           </div>
 
           {/* Image */}
-          <div ref={imageRef} className="relative min-w-0">
-            {/* World map background */}
-            <div className="absolute -inset-16 bg-world-map opacity-[0.15] -z-20 pointer-events-none" style={{ maskImage: 'radial-gradient(circle, black 30%, transparent 70%)', WebkitMaskImage: 'radial-gradient(circle, black 30%, transparent 70%)' }} />
-            
+          <div ref={imageRef} className="relative min-w-0 lg:scale-[1.07]">
             <div 
-              className="relative rounded-[32px] overflow-hidden shadow-2xl z-10 w-full"
-              style={{ aspectRatio: '4/3' }}
+              className="relative rounded-[30px] overflow-hidden shadow-2xl shadow-slate-900/12 z-10 w-full border border-slate-100"
+              style={{ aspectRatio: '16/11' }}
             >
               <img
                 src="/why_get_job_image.png"

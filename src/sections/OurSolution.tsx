@@ -10,7 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
 const solutions = [
   'We train.',
   'We help students build professional portfolios.',
-  'We simulate real workplace experience.',
+  'We create real workplace opportunities.',
   'We provide mentorship and support.',
   'We connect learners with employers and project opportunities.',
   'We help transform potential into employability.',
@@ -79,10 +79,10 @@ export default function OurSolution() {
 
       <div className="relative z-10 w-full px-6 lg:px-12 xl:px-20">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <div className="grid lg:grid-cols-[1.12fr_0.88fr] gap-12 lg:gap-16 items-center">
             {/* Image Side */}
-            <div className="relative order-2 lg:order-1">
-              <div className="relative rounded-[32px] overflow-hidden shadow-2xl aspect-[4/3]">
+            <div className="relative order-2 lg:order-1 lg:scale-[1.05]">
+              <div className="relative rounded-[30px] overflow-hidden shadow-2xl shadow-slate-900/12 aspect-[16/11] border border-white">
                 <img
                   src="/our_solution_image.png"
                   alt="Professional instructor guiding a group of adult learners in a digital learning environment"
